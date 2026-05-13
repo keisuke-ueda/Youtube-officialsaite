@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>心理士ケイ Official | 相談・雑談・歌で心を整えるゲーム型ファンサイト</title>
+  <meta name="description" content="心理士ケイの公式ブランディングサイト。心理相談、悩み相談、相談配信、雑談配信、歌ってみたを通して、人間関係や仕事で疲れた心に寄り添うYouTubeチャンネルです。" />
+  <meta name="keywords" content="心理士ケイ,心理相談,悩み相談,相談配信,雑談配信,歌ってみた,VTuber,YouTubeライブ,メンタルケア,人間関係,仕事の悩み" />
+
+  <meta property="og:title" content="心理士ケイ Official | ゲーム型ファンサイト" />
+  <meta property="og:description" content="相談・雑談・歌で、今日の気持ちを少し整える場所。触って遊べる配信ポータル。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="media/top1.png" />
+
+  <link rel="preload" as="image" href="media/top1.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div id="cursorGlow"></div>
+  <div id="toastArea"></div>
+
+  <audio id="bgm" src="media/bgm1.mp3" loop></audio>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="心理士ケイ Official トップへ">
+        <span class="logo-mark">✦</span>
+        <span>心理士ケイ Official</span>
+      </a>
+
+      <button class="hamburger" id="hamburgerButton" type="button" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
+      <nav class="nav" aria-label="メインメニュー">
+        <a href="#concept">伝えたい思い</a>
+        <a href="#contents">配信内容</a>
+        <a href="#flow">配信見たい</a>
+        <a href="#game">感情チェック</a>
+        <a href="#archive">漂う気持ち</a>
+        <a class="nav-cta" id="youtubeLink" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">YouTubeへ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="game-ui" aria-label="ゲームステータス">
+      <div class="game-card level-card" id="levelCard">
+        <span>LISTENER LEVEL</span>
+        <strong id="levelText">Lv.1 来室者</strong>
+        <div class="xp-bar"><div id="xpFill"></div></div>
+      </div>
+
+      <div class="game-card mission-card" id="missionCard">
+        <span>今日のミッション</span>
+        <strong id="missionText">漂うコメントに触れる</strong>
+      </div>
+
+      <div class="game-card hud-stat trust-hud" data-stat="trust">
+        <span>信頼度</span>
+        <strong><em id="trustText">0</em></strong>
+      </div>
+
+      <div class="game-card hud-stat resonance-hud" data-stat="resonance">
+        <span>共鳴率</span>
+        <strong><em id="resonanceText">0%</em></strong>
+      </div>
+
+      <div class="game-card hud-stat emotion-hud" data-stat="emotion">
+        <span>感情値</span>
+        <strong><em id="emotionText">0</em></strong>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="stream-label"><span class="live-dot"></span> 心理士ケイ / YouTube Live</p>
+
+        <h1>
+          ここは、<br>
+          <span class="gradient-text">
+            現実を少し忘れて、
+            心を整理できる場所。
+          </span>
+        </h1>
+
+        <p class="lead">
+          悩み相談、心理カウンセリング、雑談、学び、歌。
+          人間関係や仕事に疲れた時、
+          少しだけ心を休ませられる
+          “ネットの保健室”のような配信空間です。
+        </p>
+
+        <div class="hero-actions">
+          <button class="floating-heart" id="heartButton" type="button" aria-label="ハートを送る">💙</button>
+          <a class="btn btn-primary" id="youtubeButton" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">チャンネルを見る →</a>
+          <button class="btn btn-ghost" id="bgmButton" type="button">🔇 BGM OFF</button>
+          <button class="btn btn-line" id="breakButton" type="button">心のモヤモヤを崩す</button>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="breakArea" aria-label="心理士ケイとロボットのメインビジュアル">
+        <div class="stream-room"></div>
+        <div class="pet-area" id="petRobot" role="button" tabindex="0"> タルト君と話す</div>
+        <div id="taltBubble" class="talt-bubble" aria-live="polite"></div>
+
+        <button class="comment-bubble bubble-1" data-action="comment" type="button"><b>初見さん</b>今日ちょっと疲れました…</button>
+        <button class="comment-bubble bubble-2" data-action="comment" type="button"><b>心理士ケイ</b>ここでは無理に元気じゃなくて大丈夫。</button>
+        <button class="comment-bubble bubble-3" data-action="comment" type="button"><b>タルト君</b>コメント、ゆっくりでOKです。</button>
+
+        <div class="wave-card" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+
+        <img class="character" id="mainCharacter" src="media/top1.png" alt="心理士ケイとロボットのキャラクターイラスト">
+      </div>
+    </section>
+
+    <section class="section reveal" id="concept">
+      <div class="concept-grid">
+        <article class="concept-main">
+          <p class="eyebrow">CONCEPT</p>
+          <h2>悩みを、一人で抱え込まなくていい場所。</h2>
+          <p>
+            心理相談、雑談、学び、歌。
+            このサイトは、
+            配信を“見る”だけではなく、
+            少しずつ空気に馴染んでいける
+            ブラウザ空間として設計されています。
+          </p>
+        </article>
+
+        <aside class="concept-side">
+          <button class="theme-card" data-action="night" type="button"><div class="theme-icon">🌙</div><div><strong>安心できる空気感</strong><span>初見でも入りやすい、落ち着ける配信空間。</span></div></button>
+          <button class="theme-card" data-action="comment" type="button"><div class="theme-icon">💬</div><div><strong>気持ちの整理</strong><span>触れるたびに感情ログや記憶が少しずつ増えていきます</span></div></button>
+          <div class="theme-card theme-card-static"><div class="theme-icon">🤖</div><div><strong>タルト君との会話</strong><span>小さな言葉が、少しだけ気持ちを軽くしてくれるかもしれません。</span></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section reveal" id="contents">
+      <div class="section-head">
+        <p class="eyebrow">CONTENTS</p>
+        <h2 class="section-title">心を少し軽くする、3つのコンテンツ。</h2>
+      </div>
+
+      <div class="cards">
+
+        <article class="card" data-action="counsel">
+          <div class="icon">💬</div>
+
+          <h3>悩み相談・心理トーク</h3>
+
+          <p>
+            人間関係、仕事、将来への不安などを、一緒に整理する配信。
+            毎週金曜21:30からはカウンセリング配信を実施。
+            飛び込み相談やマシュマロ相談も読みながら、
+            スパチャランクに応じて相談者向けのプレゼント企画も行っています。
+          </p>
+        </article>
+
+        <article class="card" data-action="chat">
+          <div class="icon">☕</div>
+
+          <h3>ゆるい雑談</h3>
+
+          <p>
+            初見さんでも入りやすい、カフェやラジオのような空気感。
+            雑談だけでなく、
+            スキルアップの考え方や専門知識、
+            人間関係のコツなども自然に話している配信です。
+          </p>
+        </article>
+
+        <article class="card" data-action="song">
+          <div class="icon">🎧</div>
+
+          <h3>歌・世界観</h3>
+
+          <p>
+            歌や感情表現だけでなく、
+            ゲーム配信や参加型企画、
+            季節イベントなども交えながら、
+            “この場所ならではの空気感” を楽しめるエンタメ空間。
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section reveal" id="flow">
+      <div class="section-head">
+        <p class="eyebrow">配信の流れ</p>
+        <h2 class="section-title">配信室で流れていく時間。</h2>
+      </div>
+
+      <div class="timeline">
+        <button class="timeline-row" data-action="opening" type="button"><div><span class="time-badge">OPENING</span></div><div><strong>今日のテーマを一言で提示</strong><p>悩みを持つ人が自分ごと化しやすい入り口を作ります。</p></div></button>
+        <button class="timeline-row" data-action="talk" type="button"><div><span class="time-badge">TALK</span></div><div><strong>雑談で安心感を作る</strong><p>コメントしやすい軽い話題から距離を縮めます。</p></div></button>
+        <button class="timeline-row" data-action="counsel" type="button"><div><span class="time-badge">COUNSEL</span></div><div><strong>相談を一緒に整理</strong><p>気持ちの言語化・選択肢の整理へつなげます。</p></div></button>
+        <button class="timeline-row" data-action="song" type="button"><div><span class="time-badge">SONG</span></div><div><strong>歌や余韻で締める</strong><p>心が落ち着く余韻を作り、また来たい体験にします。</p></div></button>
+      </div>
+    </section>
+
+    <section class="section reveal" id="game">
+      <div class="section-head">
+        <p class="eyebrow">EMOTION SYSTEM</p>
+        <h2 class="section-title">触れるほど、記憶が増えていく。</h2>
+        <p class="section-text">このブラウザに、あなたが触れた小さな記憶がそっと残ります。</p>
+      </div>
+
+
+
+      <div class="game-grid emotion-pad">
+
+        <!-- ネガティブ -->
+        <button class="fun-card emotion-button emotion-anger" data-emotion="anger" type="button">
+          <span>💢</span>
+          <strong>イライラ</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-muka" data-emotion="muka" type="button">
+          <span>😖</span>
+          <strong>むかむか</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-sad" data-emotion="sad" type="button">
+          <span>☔</span>
+          <strong>かなしい</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-anxiety" data-emotion="anxiety" type="button">
+          <span>☁️</span>
+          <strong>不安</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-lonely" data-emotion="lonely" type="button">
+          <span>🌙</span>
+          <strong>さみしい</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-moya" data-emotion="moya" type="button">
+          <span>🌀</span>
+          <strong>モヤモヤ</strong>
+        </button>
+
+        <!-- ポジティブ -->
+
+        <button class="fun-card emotion-button emotion-refresh" data-emotion="refresh" type="button">
+          <span>💥</span>
+          <strong>スカッと</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-heal" data-emotion="heal" type="button">
+          <span>💙</span>
+          <strong>癒される</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-happy" data-emotion="happy" type="button">
+          <span>🌈</span>
+          <strong>幸せ</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-fuwa" data-emotion="fuwa" type="button">
+          <span>🫧</span>
+          <strong>ふわふわ</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-calm" data-emotion="calm" type="button">
+          <span>🌿</span>
+          <strong>落ち着く</strong>
+        </button>
+
+        <button class="fun-card emotion-button emotion-warm" data-emotion="warm" type="button">
+          <span>☀️</span>
+          <strong>ほっとする</strong>
+        </button>
+      </div>
+
+      <div class="emotion-meter-box">
+        <div class="emotion-meter-head">
+          <strong>今の気分メーター</strong>
+          <span id="emotionMeterComment">今の気持ちをタップしてみよう</span>
+        </div>
+
+        <div class="emotion-meter">
+          <span class="meter-label negative">ネガティブ</span>
+          <span class="meter-zero">0</span>
+          <span class="meter-label positive">ポジティブ</span>
+
+          <div class="meter-line"></div>
+          <div class="meter-center"></div>
+          <div class="meter-pointer" id="emotionPointer"></div>
+        </div>
+
+        <p class="last-emotion-log" id="lastEmotionLog">
+          前回の気分ログ：まだ記録がありません
+        </p>
+      </div>
+
+
+
+    </section>
+
+
+
+
+    <section class="section reveal">
+      <div class="quest-box">
+        <p class="eyebrow">DAILY QUEST</p>
+        <h2 class="section-title">今日のミッション</h2>
+        <div class="quest-list" id="questList"></div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="achievement-box">
+        <p class="eyebrow">ACHIEVEMENTS</p>
+        <h2 class="section-title">実績・称号</h2>
+        <div class="achievement-list" id="achievementList"></div>
+      </div>
+    </section>
+
+    <section class="section reveal lore-tags" id="archive">
+        <div class="lore-box floating-lore">
+
+            <div class="lore-header">
+            <p class="eyebrow">EMOTION LOG</p>
+
+            <h2 class="section-title">漂う気持ちのログ。</h2>
+
+            <p class="section-text">
+                配信室を漂っている言葉たち。<br>
+                気になる感情をタップすると探索ポイントが増えます。
+            </p>
+            </div>
+
+            <div class="floating-space">
+
+            <button class="floating-word size-lg" data-action="keyword" type="button">#心理相談</button>
+            <button class="floating-word size-md" data-action="keyword" type="button">#雑談配信</button>
+            <button class="floating-word size-sm" data-action="keyword" type="button">#夜更かし勢</button>
+            <button class="floating-word size-lg" data-action="keyword" type="button">#メンタルケア</button>
+            <button class="floating-word size-md" data-action="keyword" type="button">#歌ってみた</button>
+
+            <button class="floating-word size-sm" data-action="keyword" type="button">#人間関係</button>
+            <button class="floating-word size-md" data-action="keyword" type="button">#仕事の悩み</button>
+            <button class="floating-word size-lg" data-action="keyword" type="button">#心理士ケイ</button>
+            <button class="floating-word size-sm" data-action="keyword" type="button">#YouTubeライブ</button>
+
+            <button class="floating-word size-md" data-action="keyword" type="button">#相談配信</button>
+            <button class="floating-word size-sm" data-action="keyword" type="button">#感情整理</button>
+            <button class="floating-word size-lg" data-action="keyword" type="button">#ゲーム配信</button>
+            
+            <button class="floating-word size-md" data-action="keyword" type="button">#心理学</button>
+            <button class="floating-word size-sm" data-action="keyword" type="button">転職相談</button>
+            <button class="floating-word size-lg" data-action="keyword" type="button">#コミュニケーション</button>
+
+            </div>
+
+        </div>
+        </section>
+
+    <section class="section cta-section reveal">
+      <div class="cta-panel">
+        <p class="eyebrow">SUBSCRIBE</p>
+        <h2 class="section-title">一人で抱え込みすぎる前に、<br>
+          少しだけ休んでいきませんか。</h2>
+        <p>心理士ケイのYouTubeチャンネルで、相談・雑談・歌の配信室へ。</p>
+        <a class="btn btn-primary" id="youtubeButton2" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">YouTubeチャンネルへ →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><small>© 心理士ケイ / Field-UP. YouTube channel branding site.</small></footer>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"心理士ケイ Official Branding Site",
+    "url":"https://example.com/",
+    "sameAs":["https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/"],
+    "description":"心理相談、悩み相談、相談配信、雑談配信、歌ってみたを届けるYouTubeチャンネル『心理士ケイ』の公式ブランディングサイト。"
+  }
+  </script>
+
+
+
+
+
+    <a
+      class="fixed-youtube-btn"
+      href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/"
+      target="_blank"
+      rel="noopener"
+    >
+      ▶ YouTubeへ
+    </a>
+
+
+
+
+
+  <script src="js/state.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/quests.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/talt-data.js"></script>
+  <script src="js/app.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
