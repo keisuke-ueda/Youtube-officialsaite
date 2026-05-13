@@ -152,3 +152,310 @@
     margin-top: auto;
   }
 }
+
+.stream-program.game {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stream-program.game::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.80),
+      rgba(237,233,254,.58)
+    );
+}
+
+.stream-program.game::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -24px;
+
+  width: 105%;
+  height: 110%;
+
+  background-image: url("../../media/illustration/game.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+
+  opacity: .11;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stream-program.game > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .stream-program.game::after {
+    right: -28px;
+    top: 18px;
+    bottom: auto;
+
+    width: 118%;
+    height: 58%;
+
+    background-position: center top;
+    background-size: contain;
+
+    opacity: .10;
+  }
+
+  .stream-program.game .program-body {
+    margin-top: auto;
+  }
+}
+
+
+/* =========================
+   縦型雑談配信
+========================= */
+
+.stream-program.vertical {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stream-program.vertical::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.84),
+      rgba(224,242,254,.58)
+    ),
+    radial-gradient(
+      circle at 78% 28%,
+      rgba(34,211,238,.16),
+      transparent 38%
+    );
+}
+
+.stream-program.vertical::after {
+  content: "";
+
+  position: absolute;
+
+  right: -36px;
+  bottom: -18px;
+
+  width: 102%;
+  height: 108%;
+
+  background-image:
+    url("../../media/illustration/vertical-chat.png");
+
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+
+  opacity: .10;
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stream-program.vertical > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .stream-program.vertical::after {
+    right: -12px;
+    top: 12px;
+    bottom: auto;
+
+    width: 116%;
+    height: 56%;
+
+    background-position: center top;
+    background-size: contain;
+
+    opacity: .10;
+  }
+
+  .stream-program.vertical .program-body {
+    margin-top: auto;
+  }
+}
+
+/* =========================
+   勉強配信
+========================= */
+
+.stream-program.study {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stream-program.study::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.84),
+      rgba(254,252,232,.62)
+    ),
+    radial-gradient(
+      circle at 82% 22%,
+      rgba(253,224,71,.14),
+      transparent 38%
+    );
+}
+
+.stream-program.study::after {
+  content: "";
+
+  position: absolute;
+
+  right: -24px;
+  bottom: -18px;
+
+  width: 104%;
+  height: 112%;
+
+  background-image:
+    url("../../media/illustration/study.png");
+
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+
+  opacity: .10;
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stream-program.study > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .stream-program.study::after {
+    right: -8px;
+    top: 8px;
+    bottom: auto;
+
+    width: 118%;
+    height: 56%;
+
+    background-position: center top;
+    background-size: contain;
+
+    opacity: .09;
+  }
+
+  .stream-program.study .program-body {
+    margin-top: auto;
+  }
+}
+
+
+/* =========================
+   作業配信
+========================= */
+
+.stream-program.work {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stream-program.work::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.84),
+      rgba(220,252,231,.56)
+    ),
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(34,197,94,.12),
+      transparent 38%
+    );
+}
+
+.stream-program.work::after {
+  content: "";
+
+  position: absolute;
+
+  right: -42px;
+  bottom: -24px;
+
+  width: 108%;
+  height: 112%;
+
+  background-image:
+    url("../../media/illustration/work.png");
+
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+
+  opacity: .12;
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stream-program.work > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 560px) {
+  .stream-program.work::after {
+    right: -12px;
+    top: 10px;
+    bottom: auto;
+
+    width: 120%;
+    height: 58%;
+
+    background-position: center top;
+    background-size: contain;
+
+    opacity: .10;
+  }
+
+  .stream-program.work .program-body {
+    margin-top: auto;
+  }
+}
