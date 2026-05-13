@@ -23,7 +23,7 @@ const weekdayQuests = [
   { id:'w_mon', day:1, title:'月曜の気持ち整理', desc:'感情値 +15', action:'keyword' },
   { id:'w_tue', day:2, title:'火曜の相談室チェック', desc:'信頼度 +10', action:'comment' },
   { id:'w_wed', day:3, title:'水曜の深呼吸', desc:'共鳴率 +10', action:'bgm' },
-  { id:'w_thu', day:4, title:'木曜のタルト通信', desc:'癒しポイント +20', action:'robot' },
+  { id:'w_thu', day:4, title:'木曜のタルトと会話', desc:'癒しポイント +20', action:'robot' },
   { id:'w_fri', day:5, title:'金曜のモヤモヤ浄化', desc:'浄化ポイント +28', action:'break' },
   { id:'w_sat', day:6, title:'土曜の感情探索', desc:'感情ログ +8', action:'keyword' }
 ];

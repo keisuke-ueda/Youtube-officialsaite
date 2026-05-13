@@ -388,11 +388,11 @@ function playSecretMissionEffect() {
 function playSecretTaltMessage() {
   const specialMessages = [
     {
-      text: '見つけたんだね。',
+      text: '見つけてくれたんだね。いっぱい遊んでくれてありがとう。',
       voice: 'media/voice/talt_secret_001.wav'
     },
     {
-      text: 'ここまで触ってくれてありがとう。',
+      text: 'ここまで触ってくれてありがとう。大好きだよ。',
       voice: 'media/voice/talt_secret_002.wav'
     },
     {

@@ -164,13 +164,6 @@
     writing-mode: horizontal-tb;
   }
 
-  .quest-list,
-  .achievement-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
   .quest,
   .achievement {
     padding: 14px 15px;

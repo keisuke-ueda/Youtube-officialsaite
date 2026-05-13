@@ -192,38 +192,51 @@ function bindEvents() {
     addXP(10, '会話ポイント');
   });
 
-  document.getElementById('levelCard')?.addEventListener('click', event => {
+    
+  const levelCard = document.getElementById('levelCard');
+
+  levelCard?.addEventListener('click', event => {
     event.stopPropagation();
 
-    if (state.hiddenMissionFound) {
-      toast('🔐 隠しミッション', 'この秘密はもう見つけています。');
-      return;
-    }
+    if (window.__secretMissionRunning) return;
 
     secretClicks++;
 
     if (secretClicks < 5) {
-      toast('…?', `あと ${5 - secretClicks} 回で何か起きるかも`);
+      toast('🔍 秘密探索', `あと ${5 - secretClicks} 回で何か起きるかも`);
       return;
     }
 
-    document.body.classList.add('secret-mode');
-    state.hiddenMissionFound = true;
+    window.__secretMissionRunning = true;
+    secretClicks = 0;
 
-    unlock('secret');
-    completeQuest('hidden');
+    document.body.classList.add('secret-mode');
 
     playSecretMissionEffect();
     playSecretMissionSe();
     playSecretTaltMessage();
 
-    toast('🔐 隠しミッション発見', '秘密の演出が開きました。');
+    unlock('secret');
 
-    addXP(30, '隠しポイント');
+    if (!state.hiddenMissionFound) {
+      state.hiddenMissionFound = true;
+      completeQuest('hidden');
+      addXP(30, '隠しポイント');
+      toast('🔐 隠しミッション発見', '秘密の演出が開きました。');
+    } else {
+      addXP(8, '秘密ポイント');
+      toast('✨ 秘密の演出', 'また見つけてくれたね。');
+    }
 
-    secretClicks = 0;
     saveState();
+
+    setTimeout(() => {
+      document.body.classList.remove('secret-mode');
+      window.__secretMissionRunning = false;
+    }, 5200);
   });
+
+
 
   document
     .querySelectorAll('.card, .theme-card:not(.theme-card-static), .timeline-row, .status-card')
