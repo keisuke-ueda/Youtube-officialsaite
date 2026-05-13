@@ -343,3 +343,66 @@ function playEmotionButtonEffect(button, type) {
     word.remove();
   }, 1050);
 }
+
+function playSecretMissionEffect() {
+  document.body.classList.add('secret-celebration');
+
+  const message = document.createElement('div');
+  message.className = 'secret-flash-message';
+  message.textContent = '🔓 隠しミッション発見';
+  document.body.appendChild(message);
+
+  const icons = ['✦', '✨', '💙', '🌟', '🫧'];
+
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement('div');
+    p.className = 'secret-particle';
+    p.textContent = icons[Math.floor(Math.random() * icons.length)];
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 120 + Math.random() * 360;
+
+    p.style.left = `${startX}px`;
+    p.style.top = `${startY}px`;
+    p.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+    p.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+    p.style.setProperty('--r', `${Math.random() * 360}deg`);
+    p.style.animationDelay = `${Math.random() * .5}s`;
+
+    document.body.appendChild(p);
+
+    setTimeout(() => {
+      p.remove();
+    }, 3000);
+  }
+
+  setTimeout(() => {
+    document.body.classList.remove('secret-celebration');
+    message.remove();
+  }, 5000);
+}
+
+function playSecretTaltMessage() {
+  const specialMessages = [
+    {
+      text: '見つけたんだね。',
+      voice: 'media/voice/talt_secret_001.wav'
+    },
+    {
+      text: 'ここまで触ってくれてありがとう。',
+      voice: 'media/voice/talt_secret_002.wav'
+    },
+    {
+      text: 'この場所の秘密、少しだけ開いたよ。',
+      voice: 'media/voice/talt_secret_003.wav'
+    }
+  ];
+
+  const randomMessage =
+    specialMessages[Math.floor(Math.random() * specialMessages.length)];
+
+  speakTaltMessage(randomMessage);
+}

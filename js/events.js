@@ -249,13 +249,18 @@ function bindEvents() {
     secretClicks++;
 
     if (secretClicks >= 5) {
-      document.body.classList.toggle('secret-mode');
+      document.body.classList.add('secret-mode');
       state.hiddenMissionFound = true;
 
       unlock('secret');
       completeQuest('hidden');
 
-      toast('🔐 隠しミッション発見', '感情の奥に隠れていたログを見つけました。');
+      playSecretMissionEffect();
+      playSecretTaltMessage();
+
+      toast('🔐 隠しミッション発見', '秘密の演出が開きました。');
+
+      addXP(30, '隠しポイント');
 
       secretClicks = 0;
     }
