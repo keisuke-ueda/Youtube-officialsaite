@@ -127,7 +127,21 @@ function playClearMindEffect() {
   }, 1500);
 }
 
+/**
+ * 称号レベルアップ演出
+ * 同じ称号では二度とポップアップを出さない
+ */
 function showLevelUpEffect(name) {
+  if (!name) return;
+
+  const savedTitle = localStorage.getItem('currentTitle');
+
+  // すでに同じ称号を獲得済みなら何もしない
+  if (savedTitle === name) return;
+
+  // 先に保存して、連続呼び出しでも重複表示されないようにする
+  localStorage.setItem('currentTitle', name);
+
   const el = document.createElement('div');
   el.className = 'levelup-effect';
   el.innerHTML = `
@@ -140,6 +154,22 @@ function showLevelUpEffect(name) {
   for (let i = 0; i < 26; i++) createSpark();
 
   setTimeout(() => el.remove(), 1800);
+}
+
+/**
+ * レベルと称号をまとめて管理したい場合用
+ * 使う場合は showLevelUpEffect(title) の代わりに checkLevelUp(level, title) を呼ぶ
+ */
+function checkLevelUp(level, title) {
+  if (!title) return;
+
+  const lastNotifiedLevel = Number(localStorage.getItem('lastNotifiedLevel') || 0);
+  const savedTitle = localStorage.getItem('currentTitle');
+
+  if (level > lastNotifiedLevel || savedTitle !== title) {
+    localStorage.setItem('lastNotifiedLevel', String(level));
+    showLevelUpEffect(title);
+  }
 }
 
 function popAt(target, symbol) {
