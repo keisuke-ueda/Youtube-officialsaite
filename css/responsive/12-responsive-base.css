@@ -1,0 +1,297 @@
+@media (max-width: 950px) {
+  .nav {
+    display: none;
+  }
+
+  .hero,
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards,
+  .achievement-list,
+  .quest-list {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero {
+    padding-top: 36px;
+  }
+
+  .hero-visual {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-inner,
+  .hero,
+  .section,
+  .game-ui {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+
+  .section {
+    padding: 38px 0;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 7.6vw, 36px);
+    line-height: 1.18;
+    letter-spacing: -.04em;
+  }
+
+  .section-text,
+  .lead {
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+
+  .concept-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .concept-main,
+  .concept-side,
+  .timeline,
+  .lore-box,
+  .achievement-box,
+  .quest-box {
+    padding: 22px;
+    border-radius: 28px;
+  }
+
+  .concept-main {
+    min-height: auto;
+  }
+
+  .concept-main h2 {
+    font-size: clamp(26px, 8vw, 36px);
+    line-height: 1.18;
+  }
+
+  .theme-card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .theme-card strong,
+  .theme-card span {
+    writing-mode: horizontal-tb;
+    word-break: normal;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .card .icon,
+  .icon {
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    border-radius: 16px;
+    font-size: 22px;
+  }
+
+  .card h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+    line-height: 1.35;
+    word-break: normal;
+    writing-mode: horizontal-tb;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    word-break: normal;
+    writing-mode: horizontal-tb;
+  }
+
+  .game-grid:not(.emotion-pad) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .game-grid.emotion-pad {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .fun-card {
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .fun-card.emotion-button,
+  .emotion-button {
+    min-height: 78px;
+    padding: 8px 6px;
+    border-radius: 19px;
+  }
+
+  .emotion-button span {
+    font-size: 23px;
+    margin: 0;
+  }
+
+  .emotion-button strong {
+    font-size: 11.5px;
+    line-height: 1.2;
+    word-break: keep-all;
+    writing-mode: horizontal-tb;
+  }
+
+  .quest-list,
+  .achievement-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .quest,
+  .achievement {
+    padding: 14px 15px;
+    border-radius: 18px;
+  }
+
+  .quest b,
+  .achievement b,
+  .quest span,
+  .achievement span {
+    writing-mode: horizontal-tb;
+    word-break: normal;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .character {
+    width: 118%;
+  }
+
+  .comment-bubble {
+    display: none;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #cursorGlow {
+    display: none;
+  }
+  /* =========================
+    CONTENT CARD FIX
+  ========================= */
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: auto;
+
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .card .icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    font-size: 24px;
+    border-radius: 18px;
+  }
+
+  .card h3,
+  .card p {
+    writing-mode: horizontal-tb !important;
+    word-break: normal !important;
+  }
+
+  .card h3 {
+    font-size: 20px;
+    line-height: 1.4;
+
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  /* 横長カード化 */
+  #contents .card {
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-inner,
+  .hero,
+  .section {
+    width: calc(100% - 14px);
+    max-width: calc(100% - 14px);
+  }
+
+  .game-grid.emotion-pad {
+    gap: 7px;
+  }
+
+  .fun-card.emotion-button,
+  .emotion-button {
+    min-height: 72px;
+    padding: 7px 5px;
+  }
+
+  .emotion-button span {
+    font-size: 21px;
+  }
+
+  .emotion-button strong {
+    font-size: 10.5px;
+  }
+}

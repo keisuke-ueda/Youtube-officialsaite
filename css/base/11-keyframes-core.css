@@ -1,0 +1,18 @@
+@keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-12px); } }
+@keyframes bubbleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(251,113,133,0); } 100% { box-shadow: 0 0 0 0 rgba(251,113,133,0); } }
+@keyframes wave { 0%,100% { height: 14px; } 50% { height: 38px; } }
+@keyframes starMove { to { background-position: 140px 130px,250px 260px,210px 300px; } }
+@keyframes toastIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes heartUp { to { transform: translateY(-260px) rotate(20deg); opacity: 0; } }
+@keyframes rainFall { to { transform: translateY(calc(100vh + 80px)) rotate(360deg); opacity: 0; } }
+@keyframes spark { to { transform: scale(3); opacity: 0; } }
+@keyframes happy { 50% { transform: translateY(-6px) rotate(3deg); } }
+@keyframes breakShard {
+  0% { opacity: 0; transform: translate(-50%,-50%) scale(.25) rotate(0); }
+  18% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.15) rotate(var(--r)); }
+}
+@keyframes shake { 0%,100% { transform: translate(0,0); } 50% { transform: translate(3px,-2px); } }
+@keyframes bodyGlitch { 50% { filter: hue-rotate(15deg) contrast(1.08); transform: translateX(1px); } }

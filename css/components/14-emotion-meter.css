@@ -1,0 +1,104 @@
+.emotion-meter-box {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(14,165,233,.18);
+  box-shadow: 0 18px 44px rgba(14,116,144,.12);
+}
+
+.emotion-meter-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.emotion-meter-head strong {
+  font-size: 18px;
+}
+
+.emotion-meter-head span {
+  color: #075985;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.emotion-meter {
+  position: relative;
+  height: 54px;
+}
+
+.meter-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 26px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #60a5fa, #fff, #facc15);
+  box-shadow: inset 0 0 0 1px rgba(14,165,233,.14);
+}
+
+.meter-center {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 2px;
+  height: 28px;
+  background: rgba(15,23,42,.35);
+}
+
+.meter-pointer {
+  position: absolute;
+  left: 50%;
+  top: 17px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+  box-shadow: 0 10px 26px rgba(37,99,235,.28);
+  transition: left .35s ease;
+}
+
+.meter-label {
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(15,23,42,.68);
+}
+
+.meter-label.negative { left: 0; }
+.meter-label.positive { right: 0; }
+
+.meter-zero {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(15,23,42,.68);
+}
+
+.last-emotion-log {
+  margin: 12px 0 0;
+  color: rgba(15,23,42,.62);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .emotion-meter-head {
+    display: block;
+  }
+
+  .emotion-meter-head span {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}

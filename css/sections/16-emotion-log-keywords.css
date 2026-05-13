@@ -1,0 +1,247 @@
+/* ================================
+   Emotion Log / Floating Keywords
+   15 Keywords Layout
+   ================================ */
+
+.floating-lore {
+  position: relative;
+  overflow: hidden;
+  min-height: auto;
+  padding: clamp(28px, 4vw, 44px);
+  isolation: isolate;
+
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.58)),
+    radial-gradient(circle at 16% 18%, rgba(34,211,238,.20), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(139,92,246,.14), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(253,230,138,.20), transparent 36%);
+}
+
+.floating-lore::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: 0;
+  border-radius: 30px;
+  border: 1px solid rgba(14,165,233,.10);
+  pointer-events: none;
+}
+
+.floating-lore::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,211,238,.22), transparent 64%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lore-header {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  padding-right: 24px;
+}
+
+.floating-space {
+  position: relative;
+  z-index: 1;
+  min-height: 430px;
+  margin-top: 34px;
+  border-radius: 30px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,.12)),
+    radial-gradient(circle at 24% 26%, rgba(34,211,238,.14), transparent 24%),
+    radial-gradient(circle at 72% 48%, rgba(139,92,246,.10), transparent 26%);
+}
+
+.floating-word {
+  position: absolute;
+  border: 1px solid rgba(14,165,233,.18);
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(12px);
+  color: #075985;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 12px 28px rgba(14,116,144,.12);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+
+  animation:
+    floatWord 8s ease-in-out infinite,
+    glowWord 4s ease-in-out infinite;
+}
+
+.floating-word:hover {
+  background: rgba(255,255,255,.96);
+  box-shadow:
+    0 0 24px rgba(34,211,238,.42),
+    0 18px 46px rgba(14,116,144,.14);
+  filter: saturate(1.08);
+}
+
+.size-lg {
+  font-size: clamp(18px, 2vw, 22px);
+  padding: 16px 26px;
+}
+
+.size-md {
+  font-size: clamp(15px, 1.55vw, 17px);
+  padding: 13px 21px;
+}
+
+.size-sm {
+  font-size: 14px;
+  padding: 10px 17px;
+}
+
+/* 15個用配置 */
+.floating-word:nth-child(1)  { left: 5%;  top: 10%; animation-delay: 0s; }
+.floating-word:nth-child(2)  { left: 28%; top: 8%;  animation-delay: .6s; }
+.floating-word:nth-child(3)  { left: 58%; top: 10%; animation-delay: 1.2s; }
+.floating-word:nth-child(4)  { left: 75%; top: 24%; animation-delay: .3s; }
+.floating-word:nth-child(5)  { left: 12%; top: 30%; animation-delay: 1.5s; }
+
+.floating-word:nth-child(6)  { left: 38%; top: 28%; animation-delay: .9s; }
+.floating-word:nth-child(7)  { left: 62%; top: 42%; animation-delay: 1.8s; }
+.floating-word:nth-child(8)  { left: 22%; top: 50%; animation-delay: .4s; }
+.floating-word:nth-child(9)  { left: 6%;  top: 68%; animation-delay: 1.1s; }
+.floating-word:nth-child(10) { left: 46%; top: 66%; animation-delay: 2s; }
+
+.floating-word:nth-child(11) { left: 72%; top: 70%; animation-delay: .7s; }
+.floating-word:nth-child(12) { left: 34%; top: 82%; animation-delay: 1.6s; }
+.floating-word:nth-child(13) { left: 8%;  top: 84%; animation-delay: .2s; }
+.floating-word:nth-child(14) { left: 58%; top: 86%; animation-delay: 2.2s; }
+.floating-word:nth-child(15) { left: 70%; top: 55%; animation-delay: 1.3s; }
+
+/* タグごとの軽い色分け */
+.floating-word:nth-child(4n + 1) {
+  background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(236,254,255,.74));
+}
+
+.floating-word:nth-child(4n + 2) {
+  background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(239,246,255,.76));
+}
+
+.floating-word:nth-child(4n + 3) {
+  background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(245,243,255,.72));
+}
+
+.floating-word:nth-child(4n) {
+  background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,251,235,.72));
+}
+
+@keyframes floatWord {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate3d(8px, -10px, 0) rotate(.4deg);
+  }
+
+  50% {
+    transform: translate3d(-7px, 6px, 0) rotate(-.4deg);
+  }
+
+  75% {
+    transform: translate3d(10px, -5px, 0) rotate(.25deg);
+  }
+}
+
+@keyframes glowWord {
+  0%, 100% {
+    opacity: .82;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 20px rgba(34,211,238,.22),
+      0 14px 34px rgba(14,116,144,.14);
+  }
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+  .floating-space {
+    min-height: 520px;
+  }
+
+  .floating-word:nth-child(1)  { left: 4%;  top: 7%; }
+  .floating-word:nth-child(2)  { left: 46%; top: 8%; }
+  .floating-word:nth-child(3)  { left: 14%; top: 20%; }
+  .floating-word:nth-child(4)  { left: 56%; top: 23%; }
+  .floating-word:nth-child(5)  { left: 6%;  top: 35%; }
+
+  .floating-word:nth-child(6)  { left: 44%; top: 38%; }
+  .floating-word:nth-child(7)  { left: 18%; top: 50%; }
+  .floating-word:nth-child(8)  { left: 58%; top: 52%; }
+  .floating-word:nth-child(9)  { left: 5%;  top: 64%; }
+  .floating-word:nth-child(10) { left: 42%; top: 66%; }
+
+  .floating-word:nth-child(11) { left: 14%; top: 78%; }
+  .floating-word:nth-child(12) { left: 54%; top: 80%; }
+  .floating-word:nth-child(13) { left: 4%;  top: 90%; }
+  .floating-word:nth-child(14) { left: 38%; top: 91%; }
+  .floating-word:nth-child(15) { left: 66%; top: 90%; }
+}
+
+/* SP */
+@media (max-width: 560px) {
+  .floating-lore {
+    padding: 24px;
+  }
+
+  .floating-space {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 9px;
+    min-height: auto;
+    margin-top: 24px;
+    padding: 16px;
+  }
+
+  .floating-word,
+  .floating-word:nth-child(n) {
+    position: static;
+    animation: softPulse 4s ease-in-out infinite;
+    font-size: 12.5px;
+    padding: 9px 12px;
+    max-width: 100%;
+  }
+
+  .size-lg,
+  .size-md,
+  .size-sm {
+    font-size: 12.5px;
+    padding: 9px 12px;
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: .86;
+  }
+
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,67 @@
+.float-heart,
+.rain-item,
+.spark,
+.shard {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.float-heart {
+  font-size: 28px;
+  animation: heartUp 2.4s ease-out forwards;
+}
+
+.rain-item {
+  top: -40px;
+  font-size: 24px;
+  animation: rainFall 3s linear forwards;
+}
+
+.spark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 22px #22d3ee;
+  animation: spark .9s ease-out forwards;
+}
+
+.shard {
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 15px;
+  border-radius: 999px;
+  background: rgba(14,165,233,.82);
+  box-shadow: 0 0 28px rgba(34,211,238,.65);
+  animation: breakShard 1.25s ease-out forwards;
+}
+
+.is-breaking .stream-room {
+  transform: scale(.92);
+  opacity: .52;
+  filter: blur(2px);
+}
+
+.is-breaking .comment-bubble,
+.is-breaking .wave-card {
+  animation: shake .12s linear infinite;
+}
+
+.glitch-mode { animation: bodyGlitch .12s linear infinite; }
+.glitch-mode::before { filter: hue-rotate(120deg) saturate(1.5); }
+
+.secret-mode .site-header { background: rgba(253,230,138,.7); }
+.secret-mode .stream-room { box-shadow: 0 0 0 8px rgba(253,230,138,.28), var(--shadow); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

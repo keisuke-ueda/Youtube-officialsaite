@@ -1,0 +1,108 @@
+.emotion-pad {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.emotion-button {
+  min-height: 116px;
+  padding: 18px 14px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.emotion-button span {
+  margin: 0;
+  font-size: 34px;
+}
+
+.emotion-button strong {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.emotion-button small {
+  display: none;
+}
+
+.emotion-anger { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(254,226,226,.72)); }
+.emotion-muka { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,237,213,.72)); }
+.emotion-refresh { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(219,234,254,.78)); }
+.emotion-heal { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(207,250,254,.76)); }
+.emotion-happy { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(254,249,195,.78)); }
+.emotion-fuwa { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(240,249,255,.78)); }
+.emotion-sad { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(224,242,254,.76)); }
+.emotion-anxiety { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(237,233,254,.72)); }
+.emotion-lonely { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(219,234,254,.72)); }
+.emotion-tired { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(220,252,231,.72)); }
+.emotion-moya { background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(243,244,246,.82)); }
+.emotion-safe { background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(207,250,254,.82)); }
+
+.emotion-word-pop {
+  position: fixed;
+  z-index: 10001;
+  pointer-events: none;
+  font-weight: 1000;
+  color: #075985;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(34,211,238,.22);
+  box-shadow: 0 18px 42px rgba(14,116,144,.18);
+  animation: emotionWordPop 1s ease forwards;
+}
+
+.emotion-particle {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  font-size: 24px;
+  animation: emotionParticle 1.25s ease-out forwards;
+}
+
+@keyframes emotionWordPop {
+  0% { opacity: 0; transform: translate(-50%, -20%) scale(.8); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  100% { opacity: 0; transform: translate(-50%, -110%) scale(.96); }
+}
+
+@keyframes emotionParticle {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.6) rotate(0deg);
+  }
+  18% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(1.2) rotate(var(--r));
+  }
+}
+
+@media (max-width: 950px) {
+  .emotion-pad {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .emotion-pad {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .emotion-button {
+    min-height: 86px;
+    padding: 12px 8px;
+    border-radius: 20px;
+  }
+
+  .emotion-button span {
+    font-size: 26px;
+  }
+
+  .emotion-button strong {
+    font-size: 13px;
+  }
+}

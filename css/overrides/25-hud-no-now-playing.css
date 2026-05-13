@@ -1,0 +1,80 @@
+/* =========================================================
+   HUD without NOW PLAYING / Complete Override
+   NOW PLAYINGカード削除後の完成版レイアウト
+   ========================================================= */
+
+.game-ui{
+  grid-template-columns:
+    minmax(260px, 1.6fr)
+    minmax(220px, 1.35fr)
+    minmax(128px, .8fr)
+    minmax(128px, .8fr)
+    minmax(128px, .8fr);
+  gap:10px;
+}
+
+.level-card{
+  min-width:0;
+}
+
+.mission-card{
+  min-width:0;
+}
+
+.hud-stat{
+  min-width:0;
+}
+
+/* HTMLから消したカード用の残骸を完全に無効化 */
+.music-card,
+#musicVisualizer,
+.mini-wave{
+  display:none !important;
+}
+
+@media (max-width:950px){
+  .game-ui{
+    grid-template-columns:repeat(6, 1fr);
+  }
+
+  .level-card,
+  .mission-card{
+    grid-column:span 3;
+  }
+
+  .hud-stat{
+    grid-column:span 2;
+  }
+}
+
+@media (max-width:560px){
+  .game-ui{
+    grid-template-columns:repeat(6, 1fr);
+    gap:5px;
+  }
+
+  .level-card,
+  .mission-card{
+    grid-column:span 3;
+  }
+
+  .hud-stat{
+    grid-column:span 2;
+  }
+
+  .level-card strong,
+  .mission-card strong{
+    max-width:100%;
+  }
+}
+
+@media (max-width:380px){
+  .level-card,
+  .mission-card{
+    grid-column:span 3;
+  }
+
+  .hud-stat{
+    grid-column:span 2;
+  }
+}

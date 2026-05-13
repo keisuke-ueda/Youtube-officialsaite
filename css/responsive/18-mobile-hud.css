@@ -1,0 +1,179 @@
+/* ================================
+   SP HUD redesign / fixed compact
+   ================================ */
+
+@media (max-width: 560px) {
+  body {
+    padding-top: 138px;
+  }
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 70;
+  }
+
+  .header-inner {
+    min-height: 56px;
+    padding: 10px 0;
+  }
+
+  .logo {
+    gap: 9px;
+    font-size: 13px;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 14px;
+  }
+
+  .game-ui {
+    position: fixed;
+    top: 58px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 69;
+    width: min(100% - 18px, 430px);
+    margin: 0;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+    padding: 6px;
+    border-radius: 18px;
+    background: rgba(240, 253, 255, .78);
+    border: 1px solid rgba(14,165,233,.15);
+    box-shadow: 0 14px 34px rgba(14,116,144,.16);
+    backdrop-filter: blur(18px);
+  }
+
+  .game-card {
+    min-height: 36px;
+    padding: 6px 8px;
+    border-radius: 12px;
+    box-shadow: none;
+    background: rgba(255,255,255,.66);
+  }
+
+  .game-card:hover {
+    transform: none;
+  }
+
+  .game-card span {
+    font-size: 6.5px;
+    letter-spacing: .08em;
+  }
+
+  .game-card strong {
+    font-size: 9.5px;
+    line-height: 1.15;
+    margin-top: 3px;
+  }
+
+  .level-card {
+    grid-column: span 5;
+  }
+
+  .mission-card {
+    grid-column: span 5;
+  }
+.hud-stat {
+    grid-column: span 4;
+    min-height: 34px;
+  }
+
+  .hud-stat strong {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .hud-stat::before {
+    inset: auto 9px 5px 9px;
+    height: 2px;
+  }
+
+  .xp-bar {
+    height: 4px;
+    margin-top: 5px;
+  }
+
+  
+
+.hero {
+    padding-top: 18px;
+  }
+
+  .stream-label {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 11.8vw, 48px);
+    line-height: 1.08;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .hero-actions {
+    margin-top: 24px;
+  }
+
+  .floating-heart {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 80;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* very narrow phones */
+@media (max-width: 380px) {
+  body {
+    padding-top: 132px;
+  }
+
+  .game-ui {
+    width: calc(100% - 12px);
+    gap: 4px;
+    padding: 5px;
+  }
+
+  .game-card {
+    padding: 5px 6px;
+  }
+
+  .game-card span {
+    font-size: 6px;
+  }
+
+  .game-card strong {
+    font-size: 8.5px;
+  }
+
+  .hud-stat strong {
+    font-size: 10px;
+  }
+
+  .mission-card strong {
+    max-width: 92px;
+  }
+}
+
+
+@media (max-width: 560px) {
+  body.is-scrolled .site-header {
+    box-shadow: 0 8px 22px rgba(14,116,144,.10);
+  }
+
+  body.is-scrolled .game-ui {
+    background: rgba(240, 253, 255, .88);
+  }
+}

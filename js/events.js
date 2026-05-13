@@ -4,7 +4,6 @@ function bindEvents() {
 
   document.addEventListener('mousemove', event => {
     if (!cursorGlow) return;
-
     cursorGlow.style.left = event.clientX + 'px';
     cursorGlow.style.top = event.clientY + 'px';
   });
@@ -14,7 +13,9 @@ function bindEvents() {
       event.stopPropagation();
 
       const type = button.dataset.emotion;
+
       playEmotionButtonEffect(button, type);
+      playEmotionSe(type);
 
       const emotionScores = {
         anger: -5,
@@ -23,7 +24,6 @@ function bindEvents() {
         anxiety: -4,
         lonely: -4,
         moya: -4,
-
         refresh: 5,
         heal: 4,
         happy: 5,
@@ -49,26 +49,10 @@ function bindEvents() {
   bgmButton?.addEventListener('click', async event => {
     event.stopPropagation();
 
-    try {
-      if (!bgmOn) {
-        bgm.volume = 0.28;
-        await bgm.play();
-
-        bgmOn = true;
-        bgmButton.textContent = '🔊 BGM ON';
-        state.resonance += 15;
-
-        unlock('bgm');
-        completeQuest('bgm');
-        addXP(18, '共鳴率');
-      } else {
-        bgm.pause();
-        bgm.currentTime = 0;
-        bgmOn = false;
-        bgmButton.textContent = '🔇 BGM OFF';
-      }
-    } catch {
-      toast('⚠️ BGM再生エラー', '音源ファイルのパスを確認してください。');
+    if (!bgmOn) {
+      await playBgm();
+    } else {
+      stopBgm();
     }
   });
 
@@ -77,8 +61,8 @@ function bindEvents() {
       event.stopPropagation();
 
       stopAllSiteAudio();
-
       state.trust += 20;
+
       unlock('youtube');
       addXP(20, '信頼度');
     });
@@ -160,9 +144,10 @@ function bindEvents() {
 
     if (!petRobot) return;
 
-    const messages = Array.isArray(window.taltMessages) && window.taltMessages.length > 0
-      ? window.taltMessages
-      : [{ text: '今日も来てくれてありがとう。', voice: '' }];
+    const messages =
+      Array.isArray(window.taltMessages) && window.taltMessages.length > 0
+        ? window.taltMessages
+        : [{ text: '今日も来てくれてありがとう。', voice: '' }];
 
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
@@ -207,63 +192,37 @@ function bindEvents() {
     addXP(10, '会話ポイント');
   });
 
-  document.getElementById('rainButton')?.addEventListener('click', event => {
-    event.stopPropagation();
-
-    const emotions = ['✨','💙','🌙','🎧','☁️','🫧'];
-
-    for (let i = 0; i < 46; i++) {
-      createRain(emotions[Math.floor(Math.random() * emotions.length)]);
-    }
-
-    state.emotion += 18;
-    addXP(18, '感情値');
-  });
-
-  document.getElementById('glitchButton')?.addEventListener('click', event => {
-    event.stopPropagation();
-
-    document.body.classList.add('glitch-mode');
-
-    setTimeout(() => {
-      document.body.classList.remove('glitch-mode');
-    }, 900);
-
-    unlock('secret');
-    addXP(22, '隠しポイント');
-  });
-
-  document.getElementById('sparkButton')?.addEventListener('click', event => {
-    event.stopPropagation();
-
-    for (let i = 0; i < 55; i++) {
-      createSpark();
-    }
-
-    addXP(25, '癒しポイント');
-  });
-
   document.getElementById('levelCard')?.addEventListener('click', event => {
     event.stopPropagation();
 
+    if (state.hiddenMissionFound) {
+      toast('🔐 隠しミッション', 'この秘密はもう見つけています。');
+      return;
+    }
+
     secretClicks++;
 
-    if (secretClicks >= 5) {
-      document.body.classList.add('secret-mode');
-      state.hiddenMissionFound = true;
-
-      unlock('secret');
-      completeQuest('hidden');
-
-      playSecretMissionEffect();
-      playSecretTaltMessage();
-
-      toast('🔐 隠しミッション発見', '秘密の演出が開きました。');
-
-      addXP(30, '隠しポイント');
-
-      secretClicks = 0;
+    if (secretClicks < 5) {
+      toast('…?', `あと ${5 - secretClicks} 回で何か起きるかも`);
+      return;
     }
+
+    document.body.classList.add('secret-mode');
+    state.hiddenMissionFound = true;
+
+    unlock('secret');
+    completeQuest('hidden');
+
+    playSecretMissionEffect();
+    playSecretMissionSe();
+    playSecretTaltMessage();
+
+    toast('🔐 隠しミッション発見', '秘密の演出が開きました。');
+
+    addXP(30, '隠しポイント');
+
+    secretClicks = 0;
+    saveState();
   });
 
   document
@@ -278,6 +237,34 @@ function bindEvents() {
       });
     });
 
+  const hamburgerButton = document.getElementById('hamburgerButton');
+  const nav = document.querySelector('.nav');
+
+  hamburgerButton?.addEventListener('click', event => {
+    event.stopPropagation();
+
+    hamburgerButton.classList.toggle('is-open');
+    nav?.classList.toggle('is-open');
+  });
+
+  nav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerButton?.classList.remove('is-open');
+      nav?.classList.remove('is-open');
+    });
+  });
+
+  document.addEventListener('click', event => {
+    if (
+      nav?.classList.contains('is-open') &&
+      !nav.contains(event.target) &&
+      !hamburgerButton?.contains(event.target)
+    ) {
+      hamburgerButton?.classList.remove('is-open');
+      nav.classList.remove('is-open');
+    }
+  });
+
   window.addEventListener('scroll', () => {
     const character = document.querySelector('.character');
 
@@ -285,11 +272,7 @@ function bindEvents() {
       character.style.marginBottom = `${Math.min(window.scrollY * 0.045, 42)}px`;
     }
 
-    if (window.scrollY > 12) {
-      document.body.classList.add('is-scrolled');
-    } else {
-      document.body.classList.remove('is-scrolled');
-    }
+    document.body.classList.toggle('is-scrolled', window.scrollY > 12);
   }, { passive: true });
 
   document.querySelectorAll('a').forEach(link => {
@@ -313,78 +296,3 @@ function bindEvents() {
     stopAllSiteAudio();
   });
 }
-
-document.querySelectorAll('.emotion-button').forEach(button => {
-  button.addEventListener('click', event => {
-    event.stopPropagation();
-
-    const type = button.dataset.emotion;
-
-    const messages = {
-      anger: ['イライラを外に出した。', '今は押して逃がしてOK。', 'ぶつける代わりに、ここに置いた。'],
-      sad: ['悲しさを少し流した。', '泣きたい気持ちがあっても大丈夫。', '今はここで休んでいい。'],
-      anxiety: ['不安を少しほどいた。', '今すぐ全部解決しなくていい。', '息をゆっくり吐いてみよう。'],
-      lonely: ['ひとりじゃないよ。', 'ここに来てくれてありがとう。', '今だけ一緒にいよう。'],
-      tired: ['少し休もう。', '頑張りすぎていたかも。', '今日は止まっても大丈夫。'],
-      safe: ['10秒だけ先送りしよう。', '手を止めて、ここを連打していい。', '今は傷つけない選択を一緒に作ろう。']
-    };
-
-    const icons = {
-      anger: ['💢','🧊','💨'],
-      sad: ['☔','💧','🫧'],
-      anxiety: ['🫧','☁️','🌿'],
-      lonely: ['💙','🤝','🌙'],
-      tired: ['🌿','🍵','☁️'],
-      safe: ['🛟','💙','✨']
-    };
-
-    const textList = messages[type] || ['少し気持ちを逃がした。'];
-    const iconList = icons[type] || ['✨'];
-
-    const pop = document.createElement('div');
-    pop.className = 'emotion-pop';
-    pop.textContent = textList[Math.floor(Math.random() * textList.length)];
-    document.body.appendChild(pop);
-
-    for (let i = 0; i < 22; i++) {
-      createFloating(iconList[Math.floor(Math.random() * iconList.length)], 'float-heart');
-    }
-
-    state.emotion += 6;
-    state.healing += 6;
-    addXP(10, '感情整理');
-
-    setTimeout(() => {
-      pop.remove();
-    }, 1300);
-  });
-});
-
-
-const hamburgerButton = document.getElementById('hamburgerButton');
-const nav = document.querySelector('.nav');
-
-hamburgerButton?.addEventListener('click', event => {
-  event.stopPropagation();
-
-  hamburgerButton.classList.toggle('is-open');
-  nav?.classList.toggle('is-open');
-});
-
-nav?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburgerButton?.classList.remove('is-open');
-    nav?.classList.remove('is-open');
-  });
-});
-
-document.addEventListener('click', event => {
-  if (
-    nav?.classList.contains('is-open') &&
-    !nav.contains(event.target) &&
-    !hamburgerButton?.contains(event.target)
-  ) {
-    hamburgerButton?.classList.remove('is-open');
-    nav.classList.remove('is-open');
-  }
-});

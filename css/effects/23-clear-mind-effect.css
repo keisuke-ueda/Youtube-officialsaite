@@ -1,0 +1,154 @@
+/* ================================
+   Clear Mind Break Effect
+   ================================ */
+
+.clear-burst {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.95), transparent 18%),
+    radial-gradient(circle at center, rgba(34,211,238,.38), transparent 42%),
+    radial-gradient(circle at center, rgba(96,165,250,.2), transparent 68%);
+  animation: clearBurst .9s ease-out forwards;
+}
+
+.clear-ring {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 9999;
+  border: 3px solid rgba(34,211,238,.75);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: clearRing .85s ease-out forwards;
+}
+
+.clear-particle {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  font-size: 22px;
+  animation: clearParticle 1.4s ease-out forwards;
+}
+
+.clear-message {
+  position: fixed;
+  left: 50%;
+  top: 42%;
+  z-index: 10000;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(34,211,238,.28);
+  box-shadow: 0 18px 50px rgba(14,116,144,.2);
+  color: #075985;
+  font-weight: 900;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: clearMessage 1.35s ease-out forwards;
+}
+
+body.clear-mode .hero-visual {
+  animation: clearShake .45s ease;
+}
+
+body.clear-mode .stream-room {
+  filter: brightness(1.08) saturate(1.15);
+}
+
+@keyframes clearBurst {
+  0% {
+    opacity: 0;
+    transform: scale(.8);
+  }
+  28% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes clearRing {
+  0% {
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+  }
+  100% {
+    opacity: 0;
+    width: 520px;
+    height: 520px;
+  }
+}
+
+@keyframes clearParticle {
+  0% {
+    opacity: 0;
+    transform: translate(0,0) scale(.6) rotate(0deg);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(var(--x), var(--y))
+      scale(1.2)
+      rotate(var(--r));
+  }
+}
+
+@keyframes clearMessage {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(.9);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -72%) scale(.96);
+  }
+}
+
+@keyframes clearShake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+@media (max-width: 560px) {
+  .clear-message {
+    top: 48%;
+    font-size: 14px;
+    padding: 11px 16px;
+  }
+
+  @keyframes clearRing {
+    0% {
+      opacity: 1;
+      width: 30px;
+      height: 30px;
+    }
+    100% {
+      opacity: 0;
+      width: 340px;
+      height: 340px;
+    }
+  }
+}

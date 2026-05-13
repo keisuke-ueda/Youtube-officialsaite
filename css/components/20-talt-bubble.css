@@ -1,0 +1,90 @@
+/* ================================
+   Talt Talk Bubble
+   ================================ */
+.talt-bubble {
+  position: absolute;
+  left: 74px;
+  top: 92px;
+  z-index: 20;
+
+  width: max-content;
+  max-width: 260px;
+  min-width: 180px;
+
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 6px;
+
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(34,211,238,.26);
+
+  box-shadow:
+    0 14px 36px rgba(14,116,144,.16),
+    0 0 24px rgba(34,211,238,.14);
+
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 700;
+
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  backdrop-filter: blur(18px);
+
+  opacity: 0;
+  transform: translateY(10px) scale(.95);
+  pointer-events: none;
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.talt-bubble.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.talt-bubble::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: -8px;
+
+  width: 16px;
+  height: 16px;
+
+  background: rgba(255,255,255,.96);
+  border-left: 1px solid rgba(34,211,238,.26);
+  border-top: 1px solid rgba(34,211,238,.26);
+
+  transform: rotate(45deg);
+}
+
+@media (max-width: 560px) {
+  .talt-bubble {
+    position: absolute;
+
+    left: 36px;
+    top: 66px;
+
+    max-width: 220px;
+    min-width: 160px;
+
+    padding: 10px 12px;
+
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+
+.theme-card-static {
+  cursor: default;
+  pointer-events: none;
+}
+
+.theme-card-static::after {
+  opacity: .35;
+}

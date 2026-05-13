@@ -1,0 +1,135 @@
+/* ================================
+   Horizontal scroll guard
+   ================================ */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  position: relative;
+}
+
+main,
+.site-header,
+.header-inner,
+.game-ui,
+.hero,
+.section,
+.hero-visual,
+.stream-room,
+.lore-box,
+.floating-lore,
+.floating-space {
+  max-width: 100%;
+}
+
+.hero-visual,
+.stream-room,
+.floating-lore,
+.floating-space {
+  overflow: hidden;
+}
+
+.character {
+  max-width: none;
+}
+
+/* PC側でもキャラや吹き出しが画面外にはみ出して横スクロールしないように調整 */
+@media (min-width: 951px) {
+  .hero-visual {
+    overflow: visible;
+  }
+
+  .character {
+    width: min(116%, 720px);
+  }
+
+  .bubble-1 {
+    left: 8px;
+  }
+
+  .bubble-2 {
+    right: 8px;
+  }
+}
+
+/* SPでは全要素を画面幅内に収める */
+@media (max-width: 560px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .header-inner,
+  .hero,
+  .section,
+  .game-ui {
+    width: calc(100% - 16px);
+    max-width: calc(100% - 16px);
+  }
+
+  .game-ui {
+    left: 8px;
+    right: 8px;
+    transform: none;
+    width: auto;
+    max-width: none;
+  }
+
+  .hero-visual {
+    overflow: hidden;
+  }
+
+  .character {
+    width: 118%;
+    left: 50%;
+  }
+
+  .stream-room {
+    inset-inline: 0;
+  }
+
+  .floating-heart {
+    right: max(14px, env(safe-area-inset-right));
+  }
+
+  #toastArea {
+    left: 12px;
+    right: 12px;
+    max-width: calc(100% - 24px);
+  }
+
+  .toast {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .rain-item,
+  .float-heart,
+  .spark,
+  .shard {
+    max-width: 100vw;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-inner,
+  .hero,
+  .section {
+    width: calc(100% - 12px);
+    max-width: calc(100% - 12px);
+  }
+
+  .game-ui {
+    left: 6px;
+    right: 6px;
+  }
+
+  .character {
+    width: 114%;
+  }
+}

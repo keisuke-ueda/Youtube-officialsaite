@@ -1,0 +1,11 @@
+/* HUD number feedback */
+.hud-stat.is-updated,
+.level-card.is-updated {
+  animation: hudPulse .42s ease;
+}
+
+@keyframes hudPulse {
+  0% { transform: translateY(0) scale(1); }
+  45% { transform: translateY(-3px) scale(1.035); box-shadow: 0 0 26px rgba(34,211,238,.36), 0 18px 44px rgba(14,116,144,.16); }
+  100% { transform: translateY(0) scale(1); }
+}

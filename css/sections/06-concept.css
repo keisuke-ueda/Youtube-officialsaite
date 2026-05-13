@@ -1,0 +1,84 @@
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 20px;
+}
+
+.concept-main,
+.concept-side,
+.card,
+.timeline,
+.lore-box,
+.achievement-box,
+.quest-box {
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.concept-main {
+  border-radius: 38px;
+  padding: 36px;
+  min-height: 360px;
+  display: grid;
+  align-content: end;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.56)),
+    radial-gradient(circle at 15% 15%, rgba(34,211,238,.28), transparent 35%),
+    radial-gradient(circle at 100% 0%, rgba(253,230,138,.28), transparent 34%);
+}
+
+.concept-main h2 {
+  margin: 0;
+  font-size: clamp(30px,4vw,54px);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+
+.concept-main p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin: 20px 0 0;
+}
+
+.concept-side {
+  border-radius: 38px;
+  padding: 26px;
+}
+
+.theme-card {
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  padding: 18px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(14,165,233,.12);
+  cursor: pointer;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+}
+
+.theme-card:last-child { border-bottom: 0; }
+
+.theme-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(34,211,238,.14);
+}
+
+.theme-card strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.theme-card span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}

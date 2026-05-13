@@ -1,0 +1,56 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,.72);
+  border-bottom: 1px solid rgba(14,165,233,.14);
+  color: #102033;
+}
+
+.header-inner {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: .03em;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #053042;
+  background: linear-gradient(135deg, #67e8f9, #fff, #fde68a);
+  box-shadow: 0 12px 32px rgba(34,211,238,.28);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: rgba(15,23,42,.72);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.nav a:hover { color: #0284c7; }
+
+.nav-cta {
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  box-shadow: 0 12px 28px rgba(37,99,235,.18);
+}

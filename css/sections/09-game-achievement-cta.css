@@ -1,0 +1,135 @@
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.fun-card {
+  text-align: left;
+  border: 1px solid rgba(14,165,233,.18);
+  background: rgba(255,255,255,.76);
+  border-radius: 30px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform .2s ease;
+  color: #0f172a;
+}
+
+.fun-card:hover {
+  transform: translateY(-8px) rotate(-.5deg);
+}
+
+.fun-card span {
+  font-size: 38px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.fun-card strong {
+  display: block;
+  font-size: 20px;
+}
+
+.fun-card small {
+  display: block;
+  margin-top: 8px;
+  color: rgba(15,23,42,.62);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.achievement-box,
+.quest-box,
+.lore-box {
+  border-radius: 38px;
+  padding: 32px;
+}
+
+.achievement-list,
+.quest-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.achievement,
+.quest {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.66);
+  border: 1px solid rgba(14,165,233,.14);
+}
+
+.achievement.locked {
+  filter: grayscale(1);
+  opacity: .55;
+}
+
+.achievement b,
+.quest b {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.achievement span,
+.quest span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.floating-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.keyword {
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.68);
+  border: 1px solid rgba(14,165,233,.2);
+  color: #075985;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.keyword:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.cta-section {
+  text-align: center;
+  padding-bottom: 110px;
+}
+
+.cta-panel {
+  padding: 52px 24px;
+  border-radius: 40px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.84), rgba(255,255,255,.56)),
+    radial-gradient(circle at 20% 20%, rgba(34,211,238,.28), transparent 35%),
+    radial-gradient(circle at 88% 12%, rgba(253,230,138,.32), transparent 34%);
+  border: 1px solid rgba(14,165,233,.22);
+  box-shadow: var(--shadow);
+}
+
+.cta-panel p {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(14,165,233,.12);
+  padding: 34px 16px;
+  text-align: center;
+  color: rgba(15,23,42,.56);
+  font-size: 13px;
+}

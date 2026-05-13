@@ -13,6 +13,7 @@ function init() {
   renderAchievements();
   renderQuests();
   renderEmotionMeter();
+  initBgmPlayer();
 
   saveState();
 }

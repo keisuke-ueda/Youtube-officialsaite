@@ -1,0 +1,592 @@
+/* =========================================================
+   Brand Polish / Net Health Room Complete Layer
+   まとまりを崩さず、相談・学び・ネットの保健室感を強化
+   ========================================================= */
+
+:root{
+  --soft-cyan: rgba(34,211,238,.16);
+  --soft-blue: rgba(37,99,235,.13);
+  --soft-violet: rgba(139,92,246,.12);
+  --soft-yellow: rgba(253,230,138,.22);
+  --soft-white: rgba(255,255,255,.74);
+}
+
+/* 背景：水色だけで単調にならないよう、保健室・相談室の柔らかい空気に */
+body{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(34,211,238,.18), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(139,92,246,.12), transparent 28%),
+    radial-gradient(circle at 50% 92%, rgba(253,230,138,.2), transparent 34%),
+    linear-gradient(180deg, #effcff 0%, #e8f9ff 46%, #fffdf6 100%);
+}
+
+/* 背景グリッドを少し柔らかく */
+body::after{
+  opacity:.16;
+  background-size:72px 72px;
+}
+
+/* ヘッダー：医療感ではなく、安心できるポータル感 */
+.site-header{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.62));
+  box-shadow:0 8px 28px rgba(14,116,144,.06);
+}
+
+.logo-mark{
+  position:relative;
+  overflow:hidden;
+}
+
+.logo-mark::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.8), transparent 70%);
+  transform:translateX(-80%) rotate(18deg);
+  animation:logoShine 4.8s ease-in-out infinite;
+}
+
+/* HERO：キャッチ感を強化 */
+.hero-copy{
+  position:relative;
+}
+
+.hero-copy::before{
+  content:"ONLINE HEALTH ROOM";
+  position:absolute;
+  left:0;
+  top:-34px;
+  color:rgba(2,132,199,.11);
+  font-size:clamp(32px,5vw,72px);
+  font-weight:1000;
+  letter-spacing:.08em;
+  line-height:1;
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+h1{
+  text-shadow:
+    0 10px 28px rgba(37,99,235,.12),
+    0 0 34px rgba(34,211,238,.08);
+}
+
+.gradient-text{
+  background:
+    linear-gradient(
+      90deg,
+      #0891b2 0%,
+      #2563eb 48%,
+      #7c3aed 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.lead{
+  position:relative;
+  padding-left:18px;
+}
+
+.lead::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.5em;
+  bottom:.5em;
+  width:4px;
+  border-radius:999px;
+  background:linear-gradient(180deg, #22d3ee, #8b5cf6);
+  opacity:.65;
+}
+
+/* 入室タグ */
+.stream-label{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.92), rgba(236,254,255,.82));
+  box-shadow:
+    0 12px 30px rgba(14,165,233,.12),
+    inset 0 0 0 1px rgba(255,255,255,.45);
+}
+
+/* ボタン：触りたくなる感じを少し追加 */
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent 28%, rgba(255,255,255,.38), transparent 72%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+}
+
+.btn:hover::after{
+  transform:translateX(120%);
+}
+
+.btn-primary{
+  box-shadow:
+    0 16px 38px rgba(37,99,235,.24),
+    0 0 26px rgba(34,211,238,.16);
+}
+
+.btn-line{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.52), rgba(236,254,255,.42));
+}
+
+/* メインビジュアル：相談室の透明感を強化 */
+.stream-room{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.48)),
+    radial-gradient(circle at 48% 0%, rgba(34,211,238,.24), transparent 46%),
+    radial-gradient(circle at 92% 18%, rgba(240,171,252,.16), transparent 32%),
+    radial-gradient(circle at 12% 90%, rgba(253,230,138,.18), transparent 34%);
+}
+
+.stream-room::before{
+  opacity:.85;
+}
+
+.comment-bubble{
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+.comment-bubble:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.94);
+  box-shadow:
+    0 22px 48px rgba(14,116,144,.18),
+    0 0 24px rgba(34,211,238,.12);
+}
+
+/* コンセプト：白い箱から「ネットの保健室」パネルへ */
+.concept-main{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.58)),
+    radial-gradient(circle at 12% 16%, rgba(34,211,238,.24), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(139,92,246,.13), transparent 30%),
+    radial-gradient(circle at 70% 95%, rgba(253,230,138,.25), transparent 34%);
+}
+
+.concept-main::before{
+  content:"相談 / 学び / 心理カウンセリング";
+  position:absolute;
+  left:28px;
+  top:24px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(14,165,233,.16);
+  color:#0284c7;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  z-index:1;
+}
+
+.concept-main::after{
+  content:"";
+  position:absolute;
+  right:-70px;
+  bottom:-70px;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(34,211,238,.18), transparent 65%);
+  pointer-events:none;
+}
+
+.concept-main h2,
+.concept-main p{
+  position:relative;
+  z-index:1;
+}
+
+.concept-main h2{
+  text-shadow:0 10px 28px rgba(37,99,235,.12);
+}
+
+/* 右カード：相談室メニュー感 */
+.concept-side{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.58)),
+    radial-gradient(circle at 100% 0%, rgba(34,211,238,.14), transparent 34%);
+}
+
+.concept-side::before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(14,165,233,.08);
+  border-radius:28px;
+  pointer-events:none;
+}
+
+.theme-card{
+  position:relative;
+  margin:6px 0;
+  padding:18px 16px;
+  border-radius:22px;
+  border-bottom:0;
+  transition:
+    transform .22s ease,
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.theme-card:not(.theme-card-static):hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.68);
+  box-shadow:0 12px 28px rgba(14,116,144,.1);
+}
+
+.theme-card::after{
+  content:"";
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:-4px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(14,165,233,.18), transparent);
+}
+
+.theme-icon{
+  background:
+    linear-gradient(135deg, rgba(34,211,238,.18), rgba(255,255,255,.72));
+  box-shadow:
+    inset 0 0 0 1px rgba(14,165,233,.08),
+    0 10px 22px rgba(14,116,144,.08);
+}
+
+/* コンテンツカード：3枚それぞれ違う表情 */
+.card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.58));
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.95;
+  pointer-events:none;
+}
+
+.card:nth-child(1)::before{
+  background:
+    radial-gradient(circle at 18% 18%, rgba(34,211,238,.18), transparent 34%);
+}
+
+.card:nth-child(2)::before{
+  background:
+    radial-gradient(circle at 82% 16%, rgba(253,230,138,.24), transparent 34%);
+}
+
+.card:nth-child(3)::before{
+  background:
+    radial-gradient(circle at 80% 20%, rgba(139,92,246,.14), transparent 34%);
+}
+
+.card > *{
+  position:relative;
+  z-index:1;
+}
+
+.card:hover{
+  transform:translateY(-8px) rotate(.25deg);
+  box-shadow:
+    0 32px 76px rgba(14,116,144,.18),
+    0 0 28px rgba(34,211,238,.12);
+}
+
+.icon{
+  box-shadow:
+    inset 0 0 0 1px rgba(14,165,233,.08),
+    0 10px 22px rgba(14,116,144,.08);
+}
+
+/* 配信の流れ：ステップ感を強化 */
+.timeline{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.58)),
+    radial-gradient(circle at 6% 10%, rgba(34,211,238,.12), transparent 28%);
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:54px;
+  top:42px;
+  bottom:42px;
+  width:2px;
+  background:linear-gradient(180deg, rgba(34,211,238,.4), rgba(139,92,246,.22), transparent);
+  opacity:.45;
+}
+
+.timeline-row{
+  position:relative;
+  border-radius:24px;
+  padding:22px 18px;
+  transition:
+    background .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+
+.timeline-row:hover{
+  background:rgba(255,255,255,.56);
+  transform:translateX(4px);
+  box-shadow:0 14px 30px rgba(14,116,144,.08);
+}
+
+.time-badge{
+  box-shadow:
+    0 10px 22px rgba(37,99,235,.18);
+}
+
+/* 遊びカード：単調にならないアクセント */
+.fun-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.fun-card::after{
+  content:"";
+  position:absolute;
+  right:-36px;
+  top:-36px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:rgba(34,211,238,.12);
+  transition:
+    transform .3s ease,
+    opacity .3s ease;
+}
+
+.fun-card:hover::after{
+  transform:scale(1.35);
+  opacity:.9;
+}
+
+.fun-card:hover{
+  box-shadow:
+    0 32px 76px rgba(14,116,144,.18),
+    0 0 30px rgba(34,211,238,.14);
+}
+
+/* クエスト・実績：ゲーム感を整える */
+.quest,
+.achievement{
+  transition:
+    transform .22s ease,
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.quest:hover,
+.achievement:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.82);
+  box-shadow:0 14px 30px rgba(14,116,144,.08);
+}
+
+/* CTA：ネットの保健室への入口 */
+.cta-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.cta-panel::before{
+  content:"NET HEALTH ROOM";
+  position:absolute;
+  left:50%;
+  top:18px;
+  transform:translateX(-50%);
+  color:rgba(2,132,199,.1);
+  font-size:clamp(34px,6vw,86px);
+  font-weight:1000;
+  letter-spacing:.08em;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.cta-panel > *{
+  position:relative;
+  z-index:1;
+}
+
+/* タルト君吹き出しの視認性 */
+.talt-bubble{
+  box-shadow:
+    0 14px 36px rgba(14,116,144,.16),
+    0 0 24px rgba(34,211,238,.14),
+    inset 0 0 0 1px rgba(255,255,255,.52);
+}
+
+/* ローディング感ではなく、呼吸するような自然な動き */
+.pet-area{
+  animation:petBreath 3.4s ease-in-out infinite;
+}
+
+.wave-card{
+  box-shadow:
+    0 18px 42px rgba(14,116,144,.12),
+    0 0 24px rgba(34,211,238,.12);
+}
+
+/* SP：情報量を保ちつつ圧迫感を減らす */
+@media (max-width:560px){
+
+  .hero-copy::before{
+    top:-22px;
+    font-size:28px;
+    letter-spacing:.05em;
+  }
+
+  .lead{
+    padding-left:14px;
+  }
+
+  .concept-main::before{
+    position:static;
+    display:inline-flex;
+    margin-bottom:16px;
+  }
+
+  .concept-main h2{
+    font-size:clamp(30px,8.5vw,42px);
+  }
+
+  .theme-card{
+    padding:16px 12px;
+  }
+
+  .timeline::before{
+    display:none;
+  }
+
+  .timeline-row:hover{
+    transform:none;
+  }
+
+  .cta-panel::before{
+    top:20px;
+    font-size:34px;
+  }
+}
+
+/* Motion */
+@keyframes logoShine{
+  0%, 62%{
+    transform:translateX(-90%) rotate(18deg);
+  }
+  78%, 100%{
+    transform:translateX(90%) rotate(18deg);
+  }
+}
+
+@keyframes petBreath{
+  0%,100%{
+    transform:translateY(0);
+    box-shadow:0 16px 34px rgba(14,116,144,.14);
+  }
+  50%{
+    transform:translateY(-3px);
+    box-shadow:
+      0 20px 42px rgba(14,116,144,.16),
+      0 0 20px rgba(34,211,238,.16);
+  }
+}
+
+.levelup-effect{
+  position:fixed;
+  left:50%;
+  top:42%;
+  z-index:10001;
+
+  transform:translate(-50%,-50%);
+
+  padding:18px 26px;
+  border-radius:24px;
+
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(34,211,238,.28);
+
+  box-shadow:
+    0 24px 70px rgba(14,116,144,.22),
+    0 0 36px rgba(34,211,238,.22);
+
+  color:#075985;
+  text-align:center;
+  pointer-events:none;
+
+  animation:levelUpPop 1.8s ease forwards;
+}
+
+.levelup-effect strong{
+  display:block;
+  font-size:24px;
+  font-weight:1000;
+}
+
+.levelup-effect span{
+  display:block;
+  margin-top:6px;
+  font-size:14px;
+  font-weight:900;
+}
+
+@keyframes levelUpPop{
+  0%{
+    opacity:0;
+    transform:translate(-50%,-40%) scale(.82);
+  }
+  18%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1.08);
+  }
+  35%{
+    transform:translate(-50%,-50%) scale(1);
+  }
+  80%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    transform:translate(-50%,-68%) scale(.96);
+  }
+}
+
+@media(max-width:560px){
+  .levelup-effect{
+    top:48%;
+    padding:14px 20px;
+  }
+
+  .levelup-effect strong{
+    font-size:20px;
+  }
+
+  .levelup-effect span{
+    font-size:12px;
+  }
+}

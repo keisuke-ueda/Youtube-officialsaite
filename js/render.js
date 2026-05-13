@@ -77,6 +77,7 @@ function render() {
   if (lastLevel !== null && level > lastLevel) {
     toast('✨ LvUP', `新しい称号「${name}」を獲得しました`);
     showLevelUpEffect(name);
+    playLevelUpSe();
   }
 
   lastLevel = level;
