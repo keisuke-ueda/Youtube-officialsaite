@@ -250,22 +250,32 @@ function bindEvents() {
       });
     });
 
-  const hamburgerButton = document.getElementById('hamburgerButton');
-  const nav = document.querySelector('.nav');
 
-  hamburgerButton?.addEventListener('click', event => {
-    event.stopPropagation();
+    const hamburgerButton = document.getElementById('hamburgerButton');
+    const nav = document.querySelector('.nav');
 
-    hamburgerButton.classList.toggle('is-open');
-    nav?.classList.toggle('is-open');
-  });
+    hamburgerButton?.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
 
-  nav?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburgerButton?.classList.remove('is-open');
-      nav?.classList.remove('is-open');
+      const isOpen = hamburgerButton.classList.toggle('is-open');
+      nav?.classList.toggle('is-open', isOpen);
+
+      hamburgerButton.setAttribute(
+        'aria-label',
+        isOpen ? 'メニューを閉じる' : 'メニューを開く'
+      );
     });
-  });
+
+    nav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerButton?.classList.remove('is-open');
+        nav?.classList.remove('is-open');
+        hamburgerButton?.setAttribute('aria-label', 'メニューを開く');
+      });
+    });
+
+
 
   document.addEventListener('click', event => {
     if (
@@ -309,3 +319,5 @@ function bindEvents() {
     stopAllSiteAudio();
   });
 }
+
+

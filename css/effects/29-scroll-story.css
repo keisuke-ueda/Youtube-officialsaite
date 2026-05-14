@@ -1,0 +1,112 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(48px) scale(.98);
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card,
+.stream-program,
+.contact-window,
+.portal-card,
+.goods-item,
+.achievement,
+.quest {
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.card:hover,
+.stream-program:hover,
+.contact-window:hover,
+.portal-card:hover,
+.goods-item:hover {
+  transform: translateY(-8px) rotate(.3deg);
+}
+
+.memory-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.memory {
+  position: absolute;
+  white-space: nowrap;
+  font-weight: 1000;
+  letter-spacing: .08em;
+  color: rgba(14,165,233,.13);
+  animation: memoryFloat linear infinite;
+}
+
+.m1 { top: 12%; left: -20%; font-size: 40px; animation-duration: 34s; }
+.m2 { top: 28%; left: -30%; font-size: 26px; animation-duration: 42s; }
+.m3 { top: 52%; left: -25%; font-size: 56px; animation-duration: 54s; }
+.m4 { top: 70%; left: -18%; font-size: 32px; animation-duration: 46s; }
+.m5 { top: 84%; left: -35%; font-size: 24px; animation-duration: 58s; }
+.m6 { top: 40%; left: -28%; font-size: 44px; animation-duration: 38s; }
+
+@keyframes memoryFloat {
+  from {
+    transform: translateX(0) rotate(-2deg);
+  }
+
+  to {
+    transform: translateX(170vw) rotate(2deg);
+  }
+}
+
+.section {
+  position: relative;
+}
+
+.section::after {
+  content: attr(data-bg-label);
+  position: absolute;
+  right: 4%;
+  top: 8%;
+  z-index: 0;
+  font-size: clamp(56px, 11vw, 180px);
+  font-weight: 1000;
+  letter-spacing: -.08em;
+  color: rgba(14,165,233,.055);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-number {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: rgba(14,165,233,.72);
+  font-size: 13px;
+  font-weight: 1000;
+  letter-spacing: .28em;
+}
+
+.scroll-marquee {
+  position: fixed;
+  left: 0;
+  bottom: 10%;
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: clamp(54px, 12vw, 180px);
+  font-weight: 1000;
+  letter-spacing: -.08em;
+  color: rgba(14,165,233,.045);
+  transform: translateX(calc(var(--scroll-progress, 0) * -40vw));
+}
