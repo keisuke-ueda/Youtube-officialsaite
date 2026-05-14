@@ -1,0 +1,75 @@
+.goods-room{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:40px;
+
+  padding:48px;
+  border-radius:42px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.86),
+      rgba(254,240,138,.18)
+    );
+
+  border:1px solid rgba(14,165,233,.14);
+
+  overflow:hidden;
+  position:relative;
+}
+
+.goods-room::after{
+  content:"GOODS";
+  position:absolute;
+  right:30px;
+  bottom:-10px;
+
+  font-size:92px;
+  font-weight:1000;
+  color:rgba(2,132,199,.06);
+}
+
+.goods-visual{
+  position:relative;
+  min-height:260px;
+}
+
+.goods-float{
+  position:absolute;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,.66);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:0 20px 40px rgba(14,116,144,.12);
+}
+
+.goods-1{
+  width:140px;
+  height:140px;
+  top:20px;
+  left:20px;
+  font-size:58px;
+}
+
+.goods-2{
+  width:90px;
+  height:90px;
+  top:140px;
+  right:50px;
+  font-size:34px;
+}
+
+.goods-3{
+  width:120px;
+  height:120px;
+  bottom:10px;
+  left:120px;
+  font-size:46px;
+}

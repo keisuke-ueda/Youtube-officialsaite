@@ -1,0 +1,293 @@
+.contact-window-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.contact-window {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 30px;
+  border-radius: 38px;
+  color: inherit;
+  border: 1px solid rgba(14,165,233,.18);
+  box-shadow: 0 24px 64px rgba(14,116,144,.13);
+  display: grid;
+  align-content: space-between;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.contact-window:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 86px rgba(14,116,144,.2);
+}
+
+/* =========================
+   マシュマロ
+========================= */
+
+.marshmallow-window {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.92),
+      rgba(240,249,255,.72)
+    ),
+    radial-gradient(
+      circle at 86% 18%,
+      rgba(244,114,182,.14),
+      transparent 34%
+    );
+}
+
+.marshmallow-window::before {
+  content: "";
+  position: absolute;
+  right: -24px;
+  top: 18px;
+  width: 280px;
+  height: 280px;
+  background-image: url("../../media/illustration/marshmallow-fly.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: .14;
+  transform: rotate(-12deg);
+  animation: floatMarsh 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.marshmallow-window::after {
+  content: "MARSH";
+  position: absolute;
+  right: 18px;
+  bottom: 8px;
+  color: rgba(244,114,182,.09);
+  font-size: 72px;
+  font-weight: 1000;
+  letter-spacing: -.08em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================
+   X
+========================= */
+
+.x-window {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.9),
+      rgba(219,234,254,.66)
+    ),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(37,99,235,.18),
+      transparent 34%
+    );
+}
+
+.x-window::after {
+  content: "X";
+  position: absolute;
+  right: 18px;
+  bottom: 8px;
+  color: rgba(2,132,199,.08);
+  font-size: 72px;
+  font-weight: 1000;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================
+   Inner parts
+========================= */
+
+.contact-badge,
+.contact-icon,
+.contact-window h3,
+.contact-window p,
+.contact-window strong {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-badge {
+  width: fit-content;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: #0284c7;
+  background: rgba(255,255,255,.76);
+  border: 1px solid rgba(14,165,233,.18);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.contact-icon {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(14,165,233,.16);
+  box-shadow: 0 14px 30px rgba(14,116,144,.1);
+  font-size: 34px;
+}
+
+.marsh-icon {
+  background:
+    radial-gradient(circle at 35% 30%, #fff, rgba(255,255,255,.72)),
+    linear-gradient(
+      135deg,
+      rgba(255,228,230,.7),
+      rgba(240,249,255,.76)
+    );
+}
+
+.marsh-icon img {
+  width: 72px;
+  height: 72px;
+
+  object-fit: contain;
+  display: block;
+
+  transform: rotate(-12deg);
+
+  filter:
+    drop-shadow(0 10px 18px rgba(244,114,182,.22));
+
+  animation: floatMarshIcon 4s ease-in-out infinite;
+}
+
+.marsh-icon img {
+  animation: floatMarshIcon 4s ease-in-out infinite;
+}
+
+@keyframes floatMarshIcon {
+  0%, 100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-7deg);
+  }
+}
+
+.contact-window h3 {
+  margin: 18px 0 10px;
+  font-size: 30px;
+  line-height: 1.28;
+}
+
+.contact-window p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.contact-window strong {
+  margin-top: 22px;
+  color: #0284c7;
+  font-weight: 1000;
+}
+
+/* =========================
+   Goods shop
+========================= */
+
+.goods-window {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.9),
+      rgba(254,240,138,.22)
+    ),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(251,191,36,.18),
+      transparent 34%
+    );
+}
+
+.goods-window::after {
+  content: "SHOP";
+  position: absolute;
+  right: 18px;
+  bottom: 8px;
+  color: rgba(251,191,36,.12);
+  font-size: 72px;
+  font-weight: 1000;
+  letter-spacing: -.08em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes floatMarsh {
+  0%, 100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-7deg);
+  }
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 950px) {
+  .contact-window-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .goods-window {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-window-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .contact-window {
+    min-height: 260px;
+    padding: 24px;
+    border-radius: 30px;
+  }
+
+  .contact-window h3 {
+    font-size: 23px;
+  }
+
+  .contact-window p {
+    font-size: 13px;
+  }
+
+  .marshmallow-window::before {
+    right: -42px;
+    top: 18px;
+    width: 220px;
+    height: 220px;
+    opacity: .12;
+  }
+
+  .marshmallow-window::after,
+  .x-window::after,
+  .goods-window::after {
+    font-size: 54px;
+  }
+}
