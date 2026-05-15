@@ -27,3 +27,27 @@ function updateScrollStory() {
 window.addEventListener("scroll", updateScrollStory, { passive: true });
 window.addEventListener("resize", updateScrollStory);
 updateScrollStory();
+
+const storyRooms = document.querySelectorAll('.story-room');
+const roomDots = document.querySelectorAll('.room-dot');
+
+const roomObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const index = [...storyRooms].indexOf(entry.target);
+
+      roomDots.forEach(dot => dot.classList.remove('is-active'));
+      roomDots[index]?.classList.add('is-active');
+
+      if (!entry.target.dataset.visited) {
+        entry.target.dataset.visited = 'true';
+        addXP?.(5, '来室ログ');
+      }
+    });
+  },
+  { threshold: 0.45 }
+);
+
+storyRooms.forEach(room => roomObserver.observe(room));

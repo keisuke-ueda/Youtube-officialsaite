@@ -68,10 +68,36 @@ function bindEvents() {
     });
   });
 
+
+  const breakSe = new Audio('./media/se/break.mp3');
+
+  breakSe.volume = 0.5;
+  breakSe.preload = 'auto';
+      
   breakButton?.addEventListener('click', event => {
     event.stopPropagation();
 
+    /* SE */
+    breakSe.currentTime = 0;
+    breakSe.play().catch(() => {});
+
+    /* 演出 */
     playClearMindEffect();
+
+    /* 少し画面揺らし */
+    document.body.animate(
+      [
+        { transform: 'translateX(0px)' },
+        { transform: 'translateX(-4px)' },
+        { transform: 'translateX(4px)' },
+        { transform: 'translateX(0px)' }
+      ],
+      {
+        duration: 180,
+        easing: 'ease'
+      }
+    );
+
     completeQuest('break');
     addXP(28, '心のモヤモヤ浄化');
   });
@@ -125,12 +151,36 @@ function bindEvents() {
     });
   });
 
+  const heartSe = new Audio('./media/se/heart.mp3');
+
+  heartSe.volume = 0.5;
+  heartSe.preload = 'auto';
+
   document.getElementById('heartButton')?.addEventListener('click', event => {
     event.stopPropagation();
 
+    /* SE */
+    heartSe.currentTime = 0;
+    heartSe.play().catch(() => {});
+
+    /* ハート演出 */
     for (let i = 0; i < 12; i++) {
       createFloating('💙', 'float-heart');
     }
+
+    /* ボタンぷに */
+    event.currentTarget.animate(
+      [
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.18)' },
+        { transform: 'scale(.94)' },
+        { transform: 'scale(1)' }
+      ],
+      {
+        duration: 320,
+        easing: 'cubic-bezier(.2,.8,.2,1)'
+      }
+    );
 
     state.emotion += 10;
     completeQuest('heart');
@@ -138,7 +188,6 @@ function bindEvents() {
   });
 
   const petRobot = document.getElementById('petRobot');
-
   const handleTaltTalk = event => {
     event?.stopPropagation();
 
