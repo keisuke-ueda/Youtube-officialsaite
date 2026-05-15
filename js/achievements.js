@@ -1,13 +1,58 @@
 const achievements = [
-  { id:'first', icon:'🎉', title:'はじめての来室', desc:'サイトにアクセスした' },
-  { id:'youtube', icon:'📺', title:'チャンネル探索者', desc:'YouTubeボタンを押した' },
-  { id:'bgm', icon:'🎧', title:'共鳴する耳', desc:'BGMをONにした' },
-  { id:'comment', icon:'💬', title:'コメント勇者', desc:'コメント演出を押した' },
-  { id:'robot', icon:'🤖', title:'タルト君と話した', desc:'タルト君と会話した' },
-  { id:'song', icon:'🎤', title:'感情の歌い手', desc:'歌エリアを見た' },
-  { id:'night', icon:'🌙', title:'夜更かし勢', desc:'夜に訪問した' },
-  { id:'level2', icon:'⭐', title:'常連さん', desc:'Lv.2になった' },
-  { id:'secret', icon:'🔐', title:'隠しミッション発見', desc:'秘密の演出を起動した' }
+  {
+    id: 'first',
+    icon: '🚪',
+    title: 'ネット保健室の来室者',
+    desc: 'はじめて心理士ケイのネット保健室に入室した'
+  },
+  {
+    id: 'youtube',
+    icon: '📺',
+    title: '配信室への案内人',
+    desc: 'YouTubeチャンネルへの扉を開いた'
+  },
+  {
+    id: 'bgm',
+    icon: '🎧',
+    title: 'BGM共鳴者',
+    desc: 'この空間の音に耳を澄ませた'
+  },
+  {
+    id: 'comment',
+    icon: '💬',
+    title: 'コメントの観測者',
+    desc: '漂うコメントに触れて、配信室の声を観測した'
+  },
+  {
+    id: 'robot',
+    icon: '🤖',
+    title: 'タルト君のともだち',
+    desc: 'タルト君と会話して、少し仲良くなった'
+  },
+  {
+    id: 'song',
+    icon: '🎤',
+    title: '感情のリスナー',
+    desc: '歌や声に込められた感情のエリアに触れた'
+  },
+  {
+    id: 'night',
+    icon: '🌙',
+    title: '夜の相談室メンバー',
+    desc: '夜の時間にこっそり来室した'
+  },
+  {
+    id: 'level2',
+    icon: '⭐',
+    title: '少し慣れてきた常連さん',
+    desc: 'Lv.2になり、この場所に少し馴染んできた'
+  },
+  {
+    id: 'secret',
+    icon: '🔐',
+    title: '隠し扉を見つけた人',
+    desc: 'ひっそり隠された秘密の演出を見つけた'
+  }
 ];
 
 function unlock(id) {

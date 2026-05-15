@@ -8,7 +8,7 @@
 
 .section-head {
   max-width: 760px;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
 .eyebrow {
@@ -20,15 +20,86 @@
 
 .section-title {
   margin: 12px 0 0;
+  color: #0f172a;
   font-size: clamp(32px, 4vw, 54px);
   line-height: 1.14;
   letter-spacing: -.04em;
-  color: #0f172a;
 }
 
 .section-text {
   margin: 20px 0 0;
+  max-width: 760px;
   color: var(--muted);
   line-height: 1.9;
   font-size: 16px;
+}
+
+.sp-br {
+  display: none;
+}
+
+/* =========================
+   SECTION ROOM MOOD
+========================= */
+
+.story-room {
+  isolation: isolate;
+}
+
+.story-room::before {
+  pointer-events: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+  .section {
+    width: min(100% - 28px, 860px);
+    padding: 72px 0;
+  }
+
+  .section-head {
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    width: calc(100% - 20px);
+    padding: 58px 0;
+  }
+
+  .section-head {
+    margin-bottom: 24px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: .18em;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 9vw, 40px);
+    line-height: 1.18;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .section-text {
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+
+  .sp-br {
+    display: block;
+  }
+
+  #portal .section-title {
+    font-size: clamp(28px, 8.6vw, 38px);
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
 }
