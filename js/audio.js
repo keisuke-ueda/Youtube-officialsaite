@@ -6,7 +6,70 @@ const bgmTracks = [
 ];
 
 let currentBgmIndex = -1;
-let bgmVolume = 0.12;
+let bgmVolume = 0.3;
+
+/* =========================
+   共通SE
+========================= */
+
+const uiSeVolume = 0.45;
+
+const breakSe = new Audio('media/se/break.mp3');
+breakSe.volume = 0.7;
+breakSe.preload = 'auto';
+
+const heartSe = new Audio('media/se/heart.mp3');
+heartSe.volume = 0.7;
+heartSe.preload = 'auto';
+
+const levelUpSe = new Audio('media/se/levelup.mp3');
+levelUpSe.volume = 0.26;
+levelUpSe.preload = 'auto';
+
+const secretMissionSe = new Audio('media/se/secret.mp3');
+secretMissionSe.volume = 0.26;
+secretMissionSe.preload = 'auto';
+
+function playSe(audio) {
+  if (!audio) return;
+
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+function playBreakSe() {
+  playSe(breakSe);
+}
+
+function playHeartSe() {
+  playSe(heartSe);
+}
+
+function playLevelUpSe() {
+  playSe(levelUpSe);
+}
+
+function playSecretMissionSe() {
+  playSe(secretMissionSe);
+}
+
+/* =========================
+   BGM
+========================= */
+
+function updateBgmButton() {
+  if (!bgmButton) return;
+
+  if (bgmOn) {
+    bgmButton.textContent = '🎵';
+    bgmButton.classList.remove('is-off');
+    bgmButton.setAttribute('aria-label', 'BGMを止める');
+  } else {
+    bgmButton.textContent = '🔇';
+    bgmButton.classList.add('is-off');
+    bgmButton.setAttribute('aria-label', 'BGMを流す');
+  }
+}
 
 function getRandomBgmIndex() {
   if (bgmTracks.length <= 1) return 0;
@@ -39,11 +102,9 @@ async function playBgm() {
 
   try {
     await bgm.play();
-    bgmOn = true;
 
-    if (bgmButton) {
-      bgmButton.textContent = '🔊 BGM ON';
-    }
+    bgmOn = true;
+    updateBgmButton();
 
     unlock('bgm');
     completeQuest('bgm');
@@ -60,10 +121,7 @@ function pauseBgm() {
 
   bgm.pause();
   bgmOn = false;
-
-  if (bgmButton) {
-    bgmButton.textContent = '🔇 BGM OFF';
-  }
+  updateBgmButton();
 }
 
 function stopBgm() {
@@ -72,10 +130,7 @@ function stopBgm() {
   bgm.pause();
   bgm.currentTime = 0;
   bgmOn = false;
-
-  if (bgmButton) {
-    bgmButton.textContent = '🔇 BGM OFF';
-  }
+  updateBgmButton();
 }
 
 async function nextRandomBgm() {
@@ -121,11 +176,16 @@ function initBgmPlayer() {
   setRandomBgm();
 
   bgm.loop = false;
+  updateBgmButton();
 
   bgm.addEventListener('ended', () => {
     nextRandomBgm();
   });
 }
+
+/* =========================
+   タルト君ボイス
+========================= */
 
 function speakTaltMessage(message) {
   const bubble = document.getElementById('taltBubble');
@@ -160,7 +220,16 @@ function stopAllSiteAudio() {
     currentTaltAudio.pause();
     currentTaltAudio.currentTime = 0;
   }
+
+  if (currentEmotionSe) {
+    currentEmotionSe.pause();
+    currentEmotionSe.currentTime = 0;
+  }
 }
+
+/* =========================
+   感情ボタンSE
+========================= */
 
 const emotionSeMap = {
   anger: 'media/se/anger.mp3',
@@ -179,7 +248,7 @@ const emotionSeMap = {
 };
 
 let currentEmotionSe = null;
-const emotionSeVolume = 0.30;
+const emotionSeVolume = 0.4;
 
 function playEmotionSe(type) {
   const src = emotionSeMap[type];
@@ -195,20 +264,4 @@ function playEmotionSe(type) {
   currentEmotionSe.volume = emotionSeVolume;
 
   currentEmotionSe.play().catch(() => {});
-}
-
-const levelUpSe = new Audio('media/se/levelup.mp3');
-levelUpSe.volume = 0.22;
-
-function playLevelUpSe() {
-  levelUpSe.currentTime = 0;
-  levelUpSe.play().catch(() => {});
-}
-
-const secretMissionSe = new Audio('media/se/secret.mp3');
-secretMissionSe.volume = 0.26;
-
-function playSecretMissionSe() {
-  secretMissionSe.currentTime = 0;
-  secretMissionSe.play().catch(() => {});
 }

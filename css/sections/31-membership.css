@@ -1,0 +1,50 @@
+.membership-room {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(24px, 4vw, 52px);
+  align-items: center;
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: 44px;
+  border: 1px solid rgba(14,165,233,.18);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.9), rgba(240,253,255,.64)),
+    radial-gradient(circle at 12% 18%, rgba(34,211,238,.2), transparent 34%),
+    radial-gradient(circle at 92% 20%, rgba(139,92,246,.18), transparent 34%);
+  box-shadow: 0 28px 80px rgba(14,116,144,.14);
+  overflow: hidden;
+}
+
+.membership-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.membership-visual {
+  position: relative;
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(15,23,42,.18);
+}
+
+.membership-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 950px) {
+  .membership-room {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .membership-room {
+    padding: 22px;
+    border-radius: 32px;
+  }
+
+  .membership-visual {
+    border-radius: 24px;
+  }
+}

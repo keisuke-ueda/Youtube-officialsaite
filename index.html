@@ -18,6 +18,24 @@
 </head>
 
 <body>
+  <!-- 背景 -->
+  <div class="world-bg">
+    
+    <div class="cyber-bg-word word-1">ONLINE</div>
+    <div class="cyber-bg-word word-2">HEALTH</div>
+    <div class="cyber-bg-word word-3">ROOM</div>
+
+    <div class="bg-gradient"></div>
+
+    <div class="bg-grid"></div>
+
+    <div class="bg-light light-1"></div>
+    <div class="bg-light light-2"></div>
+    <div class="bg-light light-3"></div>
+
+  </div>
+
+
   <div class="stars" aria-hidden="true"></div>
   <div id="cursorGlow"></div>
   <div id="toastArea"></div>
@@ -37,22 +55,35 @@
         <span></span>
       </button>
 
-
       <nav class="nav" aria-label="メインメニュー">
-        <a href="#concept">伝えたい思い</a>
-        <a href="#contents">配信内容</a>
-        <a href="#flow">配信の案内</a>
-        <a href="#contact">相談窓口</a>
-        <a href="#goods">グッズショップ</a>
-        <a href="#portal">遊べるコンテンツ</a>
-        <a href="#game">感情チェック</a>
-        <a href="#archive">漂う気持ち</a>
-        <a class="nav-cta" id="youtubeLink" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">YouTubeへ</a>
+        <div class="nav-group">
+          <span>MAIN</span>
+          <a href="#concept">コンセプト</a>
+          <a href="#contents">スケジュール</a>
+          <a href="#flow">配信案内</a>
+        </div>
+
+        <div class="nav-group">
+          <span>JOIN</span>
+          <a href="#membership">メンバーシップ</a>
+          <a href="#contact">相談窓口</a>
+          <a href="#game">感情整理サポート</a>
+        </div>
+
+        <div class="nav-group">
+          <span>LINK</span>
+          <a href="#goods">グッズショップ</a>
+          <a href="#portal">遊べるコンテンツ</a>
+          <a class="nav-cta" id="youtubeLink" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">YouTubeへ</a>
+        </div>
       </nav>
+
     </div>
   </header>
 
   <main id="top">
+
+    <!-- ステータスバー -->
     <section class="game-ui" aria-label="ゲームステータス">
       <div class="game-card level-card" id="levelCard">
         <span>LISTENER LEVEL</span>
@@ -81,6 +112,7 @@
       </div>
     </section>
 
+    <!-- おしゃべりコーナー -->
     <section class="hero">
       <div class="hero-copy">
         <p class="stream-label"><span class="live-dot"></span> 心理士ケイ / YouTube Live</p>
@@ -103,7 +135,6 @@
         <div class="hero-actions">
           <button class="floating-heart" id="heartButton" type="button" aria-label="ハートを送る">💙</button>
           <a class="btn btn-primary" id="youtubeButton" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">チャンネルを見る →</a>
-          <button class="btn btn-ghost" id="bgmButton" type="button">🔇 BGM OFF</button>
           <button class="btn btn-line" id="breakButton" type="button">心のモヤモヤを崩す</button>
         </div>
       </div>
@@ -123,32 +154,80 @@
       </div>
     </section>
 
+
+    <!-- 配信スケジュール -->
     <section class="section reveal story-room" id="concept" data-room="ROOM 01">
-      <div class="concept-grid">
-        <article class="concept-main">
-          <p class="eyebrow">CONCEPT</p>
-          <h2>悩みを、一人で抱え込まなくていい場所。</h2>
-          <p>
-            心理相談、雑談、学び、歌。
-            このサイトは、
-            配信を“見る”だけではなく、
-            少しずつ空気に馴染んでいける
-            ブラウザ空間として設計されています。
-          </p>
+      <div class="section-head">
+        <p class="eyebrow">WEEKLY SCHEDULE</p>
+        <h2 class="section-title">配信スケジュール。</h2>
+        <p class="section-text">
+          休みの日や時間外でも、不定期・突発的に配信することがあります。急なお休みもあります。
+        </p>
+      </div>
+
+      <div class="weekly-schedule">
+
+        <article class="schedule-card monday rest">
+          <span class="schedule-day">MON</span>
+          <strong>月曜日</strong>
+          <h3>お休み</h3>
+          <p>-----</p>
         </article>
 
-        <aside class="concept-side">
-          <button class="theme-card" data-action="night" type="button"><div class="theme-icon">🌙</div><div><strong>安心できる空気感</strong><span>初見でも入りやすい、落ち着ける配信空間。</span></div></button>
-          <button class="theme-card" data-action="comment" type="button"><div class="theme-icon">💬</div><div><strong>気持ちの整理</strong><span>触れるたびに感情ログや記憶が少しずつ増えていきます</span></div></button>
-          <div class="theme-card theme-card-static"><div class="theme-icon">🤖</div><div><strong>タルト君との会話</strong><span>小さな言葉が、少しだけ気持ちを軽くしてくれるかもしれません。</span></div></div>
-        </aside>
+        <article class="schedule-card tuesday vertical">
+          <span class="schedule-day">TUE</span>
+          <strong>火曜日</strong>
+          <h3>縦型配信</h3>
+          <p>19:30〜</p>
+        </article>
+
+        <article class="schedule-card wednesday study">
+          <span class="schedule-day">WED</span>
+          <strong>水曜日</strong>
+          <h3>勉強配信</h3>
+          <p>19:30〜</p>
+        </article>
+
+        <article class="schedule-card thursday vertical">
+          <span class="schedule-day">THU</span>
+          <strong>木曜日</strong>
+          <h3>縦型配信</h3>
+          <p>19:30〜</p>
+        </article>
+
+        <article class="schedule-card friday counseling featured">
+          <span class="schedule-day">FRI</span>
+          <strong>金曜日</strong>
+          <h3>縦型配信</h3>
+          <p>19:30〜</p>
+          <div class="schedule-sub">
+            <h3>カウンセリング配信</h3>
+            <p>21:30〜</p>
+          </div>
+        </article>
+
+        <article class="schedule-card saturday game">
+          <span class="schedule-day">SAT</span>
+          <strong>土曜日</strong>
+          <h3>ゲーム配信</h3>
+          <p>22:30〜</p>
+        </article>
+
+        <article class="schedule-card sunday rest">
+          <span class="schedule-day">SUN</span>
+          <strong>日曜日</strong>
+          <h3>お休み</h3>
+          <p>-----</p>
+        </article>
+
       </div>
     </section>
 
+    <!-- コンテンツエリア -->
     <section class="section reveal story-room" id="contents" data-room="ROOM 02">
       <div class="section-head">
         <p class="eyebrow">CONTENTS</p>
-        <h2 class="section-title">心を少し軽くする、3つのコンテンツ。</h2>
+        <h2 class="section-title">心を少し軽くするコンテンツ。</h2>
       </div>
 
       <div class="cards">
@@ -195,9 +274,10 @@
       </div>
     </section>
 
+    <!-- 案内エリア -->
     <section class="section reveal story-room" id="flow" data-room="ROOM 03">
       <div class="section-head">
-        <p class="eyebrow">配信室の案内</p>
+        <p class="eyebrow">配信案内</p>
         <h2 class="section-title">気分で入れる、いろんな配信。</h2>
         <p class="section-text">
           相談したい日、学びたい日、ただ作業したい日。
@@ -259,7 +339,7 @@
         <div class="rule-title">
           <span>💙</span>
           <div>
-            <p class="eyebrow">配信室でのお願い</p>
+            <p class="eyebrow">配信でのお願い</p>
             <h3>みんなが入りやすい空気を一緒につくろう。</h3>
           </div>
         </div>
@@ -274,6 +354,42 @@
     </section>
 
 
+    <!-- メンバーシップエリア -->
+    <section class="section reveal story-room" id="membership" data-bg-label="MEMBER" data-room="ROOM 04">
+      <div class="membership-room">
+
+        <div class="membership-copy">
+          <p class="eyebrow">MEMBERSHIP</p>
+
+          <h2 class="section-title">
+            もっと近くで、<br>
+            心理士ケイを応援する。
+          </h2>
+
+          <p class="section-text">
+            メンバー限定特典として、オリジナルグッズ、限定動画、限定チャットルーム、
+            個別オンラインカウンセリングなど、加入プランに応じた特典を用意しています。
+          </p>
+
+          <a
+            class="btn btn-primary"
+            href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/join"
+            target="_blank"
+            rel="noopener"
+          >
+            メンバーシップを見る →
+          </a>
+        </div>
+
+        <div class="membership-visual">
+          <img src="media/membership/member.png" alt="メンバー加入限定特典の紹介">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SNSエリア -->
     <section class="section reveal story-room" id="contact" data-bg-label="CONTACT" data-room="ROOM 04">
       <div class="section-head">
         <p class="eyebrow">CONTACT</p>
@@ -310,108 +426,15 @@
     </section>
 
 
-    
-    <section class="section reveal story-room" id="goods" data-bg-label="GOODS" data-room="ROOM 05">
-      <div class="goods-room">
-
-        <div class="goods-copy">
-          <p class="eyebrow">ROOM GOODS</p>
-
-          <h2 class="section-title goods-title">
-            日常の中に、<br>
-            少しだけこの空気感を。
-          </h2>
-
-          <p class="section-text goods-text">
-            アクリルキーホルダー、デスクグッズ、キャップ、タルト君アイテムなど。
-            “落ち着ける空気感”をテーマに、日常でも使いやすいグッズを作っています。
-          </p>
-
-          <div class="goods-actions">
-            <a
-              class="btn btn-primary"
-              href="https://prescription.base.shop/"
-              target="_blank"
-              rel="noopener"
-            >
-              グッズショップへ →
-            </a>
-
-            <span class="goods-note">普段使いできる心理士ケイグッズ</span>
-          </div>
-        </div>
-
-        <div class="goods-lifestyle">
-
-          <a class="goods-item goods-ball">
-            <img src="./media/goods/stressball.jpg">
-          </a>
-
-          <a class="goods-item goods-key">
-            <img src="./media/goods/keyholder.png">
-          </a>
-
-          <a class="goods-item goods-cap">
-            <img src="./media/goods/cap.jpg">
-          </a>
-
-          <a class="goods-item goods-pad">
-            <img src="./media/goods/mousepad.png">
-          </a>
-
-        </div>
-      </div>
-    </section>
-            
 
 
-    <section class="section reveal story-room" id="portal" data-bg-label="PLAY" data-room="ROOM 06">
-      <div class="section-head">
-        <p class="eyebrow">PLAY & CHECK</p>
-        <h2 class="section-title">配信の外でも、遊べる・試せるコンテンツ。</h2>
-        <p class="section-text">
-          心理士ケイの世界観をそのままに、ゲームや心理テストなどを少しずつ追加していきます。
-        </p>
-      </div>
-
-      <div class="portal-grid">
-        <a class="portal-card portal-game" href="pages/games/watermelon/">
-          <span class="portal-label">GAME</span>
-          <div class="portal-icon">🍉</div>
-          <h3>ゲームコーナー</h3>
-          <p>自作スイカゲームで遊べるミニゲームページ。</p>
-          <strong>遊びに行く →</strong>
-        </a>
-
-        <a class="portal-card portal-test" href="pages/psychology-tests/egogram/">
-          <span class="portal-label">心理テスト</span>
-          <div class="portal-icon">🧠</div>
-          <h3>エゴグラム診断</h3>
-          <p>自分の考え方や人間関係のクセを知る心理テスト。</p>
-          <strong>診断する →</strong>
-        </a>
-
-        <article class="portal-card portal-coming">
-          <span class="portal-label">COMING SOON</span>
-          <div class="portal-icon">✨</div>
-          <h3>今後追加予定</h3>
-          <p>参加型コンテンツ、素材配布、配信連動企画などを追加予定。</p>
-          <strong>準備中</strong>
-        </article>
-      </div>
-    </section>
-
-
-
-
+    <!-- ゲームエリア -->
     <section class="section reveal story-room" id="game" data-room="ROOM 07">
       <div class="section-head">
         <p class="eyebrow">EMOTION SYSTEM</p>
-        <h2 class="section-title">触れるほど、記憶が増えていく。</h2>
-        <p class="section-text">このブラウザに、あなたが触れた小さな記憶がそっと残ります。</p>
+        <h2 class="section-title">あなたの感情整理サポートゲーム</h2>
+        <p class="section-text">あなたの感情をエフェクトと音声で表現するよ。</p>
       </div>
-
-
 
       <div class="game-grid emotion-pad">
 
@@ -500,11 +523,120 @@
         </p>
       </div>
 
+      <button
+        class="x-post-emotion"
+        id="xPostEmotionButton"
+        type="button"
+      >
+        𝕏 今の気分をポストする
+      </button>
+
+      <canvas
+        id="emotionShareCanvas"
+        width="1200"
+        height="630"
+        style="display:none;"
+      ></canvas>
+
+    </section>
+
+
+
+    <!-- グッズショップ -->
+    <section class="section reveal story-room" id="goods" data-bg-label="GOODS" data-room="ROOM 05">
+      <div class="goods-room">
+
+        <div class="goods-copy">
+          <p class="eyebrow">ROOM GOODS</p>
+
+          <h2 class="section-title goods-title">
+            日常の中に、<br>
+            少しだけ空気感を。
+          </h2>
+
+          <p class="section-text goods-text">
+            アクリルキーホルダー、デスクグッズ、キャップ、ストレス対策アイテムなど。
+            “落ち着ける空気感”をテーマに、日常でも使いやすいグッズを作っています。
+          </p>
+
+          <div class="goods-actions">
+            <a
+              class="btn btn-primary"
+              href="https://prescription.base.shop/"
+              target="_blank"
+              rel="noopener"
+            >
+              グッズショップへ →
+            </a>
+
+            <span class="goods-note">普段使いできる心理士ケイグッズ</span>
+          </div>
+        </div>
+
+        <div class="goods-lifestyle">
+
+          <a class="goods-item goods-ball">
+            <img src="./media/goods/stressball.png">
+          </a>
+
+          <a class="goods-item goods-key">
+            <img src="./media/goods/keyholder.png">
+          </a>
+
+          <a class="goods-item goods-cap">
+            <img src="./media/goods/cap.png">
+          </a>
+
+          <a class="goods-item goods-pad">
+            <img src="./media/goods/mousepad.png">
+          </a>
+
+        </div>
+      </div>
+    </section>
+            
+
+    <!-- 外部リンクエリア -->
+    <section class="section reveal story-room" id="portal" data-bg-label="PLAY" data-room="ROOM 06">
+      <div class="section-head">
+        <p class="eyebrow">PLAY & CHECK</p>
+        <h2 class="section-title">配信の外でも、遊べる・試せるコンテンツ。</h2>
+        <p class="section-text">
+          配信の世界観をそのままに、ゲームや心理テストなどを少しずつ追加していきます。
+        </p>
+      </div>
+
+      <div class="portal-grid">
+        <a class="portal-card portal-game" href="pages/games/watermelon/">
+          <span class="portal-label">GAME</span>
+          <div class="portal-icon">🍉</div>
+          <h3>ゲームコーナー</h3>
+          <p>自作スイカゲームで遊べるミニゲームページ。</p>
+          <strong>遊びに行く →</strong>
+        </a>
+
+        <a class="portal-card portal-test" href="pages/psychology-tests/egogram/">
+          <span class="portal-label">心理テスト</span>
+          <div class="portal-icon">🧠</div>
+          <h3>エゴグラム診断</h3>
+          <p>自分の考え方や人間関係のクセを知る心理テスト。</p>
+          <strong>診断する →</strong>
+        </a>
+
+        <article class="portal-card portal-coming">
+          <span class="portal-label">COMING SOON</span>
+          <div class="portal-icon">✨</div>
+          <h3>今後追加予定</h3>
+          <p>参加型コンテンツ、素材配布、配信連動企画などを追加予定。</p>
+          <strong>準備中</strong>
+        </article>
+      </div>
     </section>
 
 
 
 
+    <!-- ミッションエリア -->
     <section class="section reveal story-room" data-room="ROOM 08">
       <div class="quest-box">
         <p class="eyebrow">DAILY QUEST</p>
@@ -521,46 +653,7 @@
       </div>
     </section>
 
-    <section class="section reveal lore-tags story-room" id="archive" data-room="ROOM 10">
-        <div class="lore-box floating-lore">
-
-            <div class="lore-header">
-            <p class="eyebrow">EMOTION LOG</p>
-
-            <h2 class="section-title">漂う気持ちのログ。</h2>
-
-            <p class="section-text">
-                配信室を漂っている言葉たち。<br>
-                気になる感情をタップすると探索ポイントが増えます。
-            </p>
-            </div>
-
-            <div class="floating-space">
-
-            <button class="floating-word size-lg" data-action="keyword" type="button">#心理相談</button>
-            <button class="floating-word size-md" data-action="keyword" type="button">#雑談配信</button>
-            <button class="floating-word size-sm" data-action="keyword" type="button">#夜更かし勢</button>
-            <button class="floating-word size-lg" data-action="keyword" type="button">#メンタルケア</button>
-            <button class="floating-word size-md" data-action="keyword" type="button">#歌ってみた</button>
-
-            <button class="floating-word size-sm" data-action="keyword" type="button">#人間関係</button>
-            <button class="floating-word size-md" data-action="keyword" type="button">#仕事の悩み</button>
-            <button class="floating-word size-lg" data-action="keyword" type="button">#心理士ケイ</button>
-            <button class="floating-word size-sm" data-action="keyword" type="button">#YouTubeライブ</button>
-
-            <button class="floating-word size-md" data-action="keyword" type="button">#相談配信</button>
-            <button class="floating-word size-sm" data-action="keyword" type="button">#感情整理</button>
-            <button class="floating-word size-lg" data-action="keyword" type="button">#ゲーム配信</button>
-            
-            <button class="floating-word size-md" data-action="keyword" type="button">#心理学</button>
-            <button class="floating-word size-sm" data-action="keyword" type="button">転職相談</button>
-            <button class="floating-word size-lg" data-action="keyword" type="button">#コミュニケーション</button>
-
-            </div>
-
-        </div>
-        </section>
-
+    <!-- Youtubeエリア -->
     <section class="section cta-section reveal story-room" data-room="ROOM 11">
       <div class="cta-panel">
         <p class="eyebrow">SUBSCRIBE</p>
@@ -570,6 +663,49 @@
         <a class="btn btn-primary" id="youtubeButton2" href="https://www.youtube.com/channel/UCGZ9tx2keMqtCSL_UW1vyRw/" target="_blank" rel="noopener">YouTubeチャンネルへ →</a>
       </div>
     </section>
+
+    
+
+    <!-- コメントログエリア -->
+    <section class="section reveal lore-tags story-room" id="archive" data-room="ROOM 10">
+      <div class="lore-box floating-lore">
+
+          <div class="lore-header">
+          <p class="eyebrow">EMOTION LOG</p>
+
+          <h2 class="section-title">漂う気持ちのログ。</h2>
+
+          <p class="section-text">
+              配信を漂っている言葉たち。<br>
+              気になる感情をタップすると探索ポイントが増えます。
+          </p>
+          </div>
+
+          <div class="floating-space">
+
+          <button class="floating-word size-lg" data-action="keyword" type="button">#心理相談</button>
+          <button class="floating-word size-md" data-action="keyword" type="button">#雑談配信</button>
+          <button class="floating-word size-sm" data-action="keyword" type="button">#夜更かし勢</button>
+          <button class="floating-word size-lg" data-action="keyword" type="button">#メンタルケア</button>
+          <button class="floating-word size-md" data-action="keyword" type="button">#歌ってみた</button>
+
+          <button class="floating-word size-sm" data-action="keyword" type="button">#人間関係</button>
+          <button class="floating-word size-md" data-action="keyword" type="button">#仕事の悩み</button>
+          <button class="floating-word size-lg" data-action="keyword" type="button">#心理士ケイ</button>
+          <button class="floating-word size-sm" data-action="keyword" type="button">#YouTubeライブ</button>
+
+          <button class="floating-word size-md" data-action="keyword" type="button">#相談配信</button>
+          <button class="floating-word size-sm" data-action="keyword" type="button">#感情整理</button>
+          <button class="floating-word size-lg" data-action="keyword" type="button">#ゲーム配信</button>
+          
+          <button class="floating-word size-md" data-action="keyword" type="button">#心理学</button>
+          <button class="floating-word size-sm" data-action="keyword" type="button">転職相談</button>
+          <button class="floating-word size-lg" data-action="keyword" type="button">#コミュニケーション</button>
+
+          </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer"><small>© 心理士ケイ / Field-UP. YouTube channel branding site.</small></footer>
@@ -586,6 +722,13 @@
   </script>
 
 
+  <button
+    class="floating-bgm is-off"
+    id="bgmButton"
+    type="button"
+  >
+    🔇
+  </button>
 
 
 
@@ -614,17 +757,19 @@
 
 
 
-  <script src="js/state.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/quests.js"></script>
-  <script src="js/achievements.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/effects.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/events.js"></script>
-  <script src="js/talt-data.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/scroll-story.js"></script>
+      
+
+    <script src="js/state.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/quests.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/talt-data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/scroll-story.js"></script>
 
 
 

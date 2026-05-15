@@ -71,7 +71,7 @@ function bindEvents() {
 
   const breakSe = new Audio('./media/se/break.mp3');
 
-  breakSe.volume = 0.5;
+  breakSe.volume = 0.6;
   breakSe.preload = 'auto';
       
   breakButton?.addEventListener('click', event => {
@@ -153,7 +153,7 @@ function bindEvents() {
 
   const heartSe = new Audio('./media/se/heart.mp3');
 
-  heartSe.volume = 0.5;
+  heartSe.volume = 0.6;
   heartSe.preload = 'auto';
 
   document.getElementById('heartButton')?.addEventListener('click', event => {
@@ -347,9 +347,27 @@ function bindEvents() {
     document.body.classList.toggle('is-scrolled', window.scrollY > 12);
   }, { passive: true });
 
+
   document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', stopAllSiteAudio);
-    link.addEventListener('touchstart', stopAllSiteAudio, { passive: true });
+    const shouldStopAudio = () => {
+      const href = link.getAttribute('href') || '';
+
+      if (href.startsWith('#')) return false;
+      if (href.startsWith('javascript:')) return false;
+
+      return (
+        link.target === '_blank' ||
+        href.startsWith('http') ||
+        href.includes('.html') ||
+        href.startsWith('pages/')
+      );
+    };
+
+    link.addEventListener('click', () => {
+      if (shouldStopAudio()) {
+        stopAllSiteAudio();
+      }
+    });
   });
 
   document.addEventListener('visibilitychange', () => {
@@ -367,6 +385,174 @@ function bindEvents() {
     saveEmotionSessionLog();
     stopAllSiteAudio();
   });
-}
 
+
+// Xのpost
+  const SITE_URL = 'https://ここにURL';
+
+  document.getElementById('xPostEmotionButton')?.addEventListener('click', async event => {
+
+    event.stopPropagation();
+
+    const value =
+      state.currentEmotionBalance || 0;
+
+    const comment =
+      document.getElementById('emotionMeterComment')
+        ?.textContent || '';
+
+    /* =========================
+      キャンバス生成
+    ========================= */
+
+    const canvas =
+      document.getElementById('emotionShareCanvas');
+
+    const ctx =
+      canvas.getContext('2d');
+
+    /* 背景 */
+
+    const grad =
+      ctx.createLinearGradient(0, 0, 1200, 630);
+
+    grad.addColorStop(0, '#dff7ff');
+    grad.addColorStop(1, '#eef2ff');
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1200, 630);
+
+    /* タイトル */
+
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 64px sans-serif';
+
+    ctx.fillText(
+      '今の気分メーター',
+      80,
+      120
+    );
+
+    /* 数値 */
+
+    ctx.fillStyle = '#2563eb';
+    ctx.font = 'bold 120px sans-serif';
+
+    ctx.fillText(
+      String(value),
+      80,
+      280
+    );
+
+    /* コメント */
+
+    ctx.fillStyle = '#334155';
+    ctx.font = '48px sans-serif';
+
+    ctx.fillText(
+      comment,
+      80,
+      380
+    );
+
+    /* メーター */
+
+    const meterX = 80;
+    const meterY = 500;
+    const meterWidth = 1040;
+
+    const meterGrad =
+      ctx.createLinearGradient(
+        meterX,
+        0,
+        meterX + meterWidth,
+        0
+      );
+
+    meterGrad.addColorStop(0, '#60a5fa');
+    meterGrad.addColorStop(.5, '#ffffff');
+    meterGrad.addColorStop(1, '#facc15');
+
+    ctx.strokeStyle = meterGrad;
+    ctx.lineWidth = 20;
+
+    ctx.beginPath();
+
+    ctx.moveTo(meterX, meterY);
+    ctx.lineTo(meterX + meterWidth, meterY);
+
+    ctx.stroke();
+
+    /* ポインター */
+
+    const normalized =
+      Math.max(-100, Math.min(100, value));
+
+    const pointerX =
+      meterX + (
+        (normalized + 100) / 200
+      ) * meterWidth;
+
+    ctx.fillStyle = '#2563eb';
+
+    ctx.beginPath();
+
+    ctx.arc(
+      pointerX,
+      meterY,
+      24,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+    /* サイトURL */
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '32px sans-serif';
+
+    ctx.fillText(
+      SITE_URL,
+      80,
+      590
+    );
+
+    /* DL */
+
+    const link =
+      document.createElement('a');
+
+    link.download =
+      'emotion-meter.png';
+
+    link.href =
+      canvas.toDataURL('image/png');
+
+    link.click();
+
+    /* X投稿 */
+
+    const text = [
+      `今の気分メーター：${value}`,
+      comment,
+      '',
+      SITE_URL,
+      '',
+      '#心理士ケイ #感情整理 #メンタルケア'
+    ].join('\n');
+
+    const url =
+      'https://twitter.com/intent/tweet?text=' +
+      encodeURIComponent(text);
+
+    window.open(
+      url,
+      '_blank',
+      'noopener,noreferrer'
+    );
+
+  });
+
+}
 

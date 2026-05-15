@@ -1,0 +1,167 @@
+/* =========================
+   DIGITAL CYBER WORLD
+========================= */
+
+.world-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -10;
+  background: #eafcff;
+}
+
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 14%, rgba(34,211,238,.42), transparent 26%),
+    radial-gradient(circle at 18% 34%, rgba(37,99,235,.20), transparent 28%),
+    radial-gradient(circle at 78% 72%, rgba(139,92,246,.24), transparent 30%),
+    linear-gradient(180deg, #f7feff 0%, #dff7ff 28%, #bcdcff 68%, #8db8ff 100%);
+}
+
+/* 細かいデジタルドット */
+.bg-grid {
+  position: absolute;
+  inset: -20%;
+  opacity: .45;
+  background-image:
+    radial-gradient(circle, rgba(15,23,42,.26) 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(14,165,233,.45) 1px, transparent 1.8px);
+  background-size: 18px 18px, 26px 26px;
+  background-position: 0 0, 8px 12px;
+  transform: rotate(-8deg);
+  animation: cyberDrift 26s linear infinite;
+}
+
+/* 走査線 */
+.world-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .12;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(15,23,42,.18) 0px,
+      rgba(15,23,42,.18) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  mix-blend-mode: multiply;
+}
+
+/* ノイズ粒子 */
+.world-bg::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  opacity: .32;
+  background-image:
+    radial-gradient(circle, rgba(15,23,42,.34) 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(34,211,238,.52) 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 2px);
+  background-size: 32px 32px, 44px 44px, 66px 66px;
+  transform: rotate(14deg);
+  animation: particleFlow 18s linear infinite;
+  mix-blend-mode: multiply;
+}
+
+/* 光のかたまり */
+.bg-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .38;
+  mix-blend-mode: screen;
+}
+
+.light-1 {
+  width: 520px;
+  height: 520px;
+  background: #22d3ee;
+  top: -160px;
+  left: -140px;
+  animation: orbFloat 18s ease-in-out infinite;
+}
+
+.light-2 {
+  width: 680px;
+  height: 680px;
+  background: #2563eb;
+  top: 18%;
+  right: -260px;
+  animation: orbFloat 24s ease-in-out infinite reverse;
+}
+
+.light-3 {
+  width: 520px;
+  height: 520px;
+  background: #8b5cf6;
+  bottom: -220px;
+  left: 20%;
+  animation: orbFloat 28s ease-in-out infinite;
+}
+
+/* 巨大サイバー文字 */
+.cyber-bg-word {
+  position: fixed;
+  z-index: -4;
+  pointer-events: none;
+  font-size: clamp(70px, 14vw, 210px);
+  font-weight: 1000;
+  letter-spacing: -.08em;
+  line-height: .85;
+  color: rgba(15,23,42,.08);
+  mix-blend-mode: multiply;
+}
+
+.cyber-bg-word.word-1 {
+  left: 4vw;
+  top: 12vh;
+}
+
+.cyber-bg-word.word-2 {
+  right: -4vw;
+  top: 36vh;
+}
+
+.cyber-bg-word.word-3 {
+  left: 18vw;
+  bottom: 8vh;
+}
+
+@keyframes cyberDrift {
+  from {
+    transform: translate3d(0,0,0) rotate(-8deg);
+  }
+
+  to {
+    transform: translate3d(-120px,120px,0) rotate(-8deg);
+  }
+}
+
+@keyframes particleFlow {
+  from {
+    transform: translate3d(0,0,0) rotate(14deg);
+  }
+
+  to {
+    transform: translate3d(160px,-120px,0) rotate(14deg);
+  }
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0,0);
+  }
+
+  50% {
+    transform: translate(22px,-36px);
+  }
+
+  100% {
+    transform: translate(0,0);
+  }
+}

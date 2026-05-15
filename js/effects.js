@@ -406,3 +406,51 @@ function playSecretTaltMessage() {
 
   speakTaltMessage(randomMessage);
 }
+
+
+const world = document.querySelector('.bg-gradient');
+
+const bgObserver = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if(!entry.isIntersecting) return;
+
+    const type = entry.target.dataset.bg;
+
+    if(type === 'deep'){
+
+      world.style.background = `
+        linear-gradient(
+          180deg,
+          #dff7ff 0%,
+          #c6d8ff 20%,
+          #7c8ee6 70%,
+          #1e293b 100%
+        )
+      `;
+    }
+
+    if(type === 'night'){
+
+      world.style.background = `
+        linear-gradient(
+          180deg,
+          #0f172a 0%,
+          #111827 40%,
+          #020617 100%
+        )
+      `;
+    }
+
+  });
+
+}, {
+  threshold:.3
+});
+
+document
+.querySelectorAll('[data-bg]')
+.forEach(section => {
+  bgObserver.observe(section);
+});

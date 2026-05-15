@@ -60,7 +60,9 @@
   color: inherit;
 }
 
-.theme-card:last-child { border-bottom: 0; }
+.theme-card:last-child {
+  border-bottom: 0;
+}
 
 .theme-icon {
   width: 44px;
@@ -81,4 +83,220 @@
   color: var(--muted);
   font-size: 14px;
   line-height: 1.7;
+}
+
+/* =========================
+   WEEKLY SCHEDULE
+========================= */
+
+.weekly-schedule {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.schedule-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 226px;
+  padding: 20px;
+  border-radius: 28px;
+  border: 1px solid rgba(14,165,233,.16);
+  box-shadow: 0 18px 44px rgba(14,116,144,.1);
+  backdrop-filter: blur(14px);
+  transition:
+    transform .24s ease,
+    box-shadow .24s ease,
+    border-color .24s ease;
+}
+
+.schedule-card::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  top: -42px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(34,211,238,.12);
+  pointer-events: none;
+}
+
+.schedule-card:hover {
+  transform: translateY(-8px) rotate(-.3deg);
+  box-shadow: 0 24px 70px rgba(14,165,233,.16);
+}
+
+.schedule-card.featured {
+  transform: translateY(-10px);
+  border-color: rgba(139,92,246,.28);
+  box-shadow: 0 24px 60px rgba(139,92,246,.12);
+}
+
+.schedule-card.featured:hover {
+  transform: translateY(-16px) rotate(-.3deg);
+}
+
+.schedule-day {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #0284c7;
+  background: rgba(255,255,255,.78);
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: .12em;
+}
+
+.schedule-card strong,
+.schedule-card h3,
+.schedule-card p,
+.schedule-sub,
+.schedule-sub h4,
+.schedule-sub p {
+  position: relative;
+  z-index: 1;
+}
+
+.schedule-card strong {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(15,23,42,.58);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.schedule-card h3,
+.schedule-sub h4 {
+  margin: 0;
+  color: #102033;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.schedule-card p,
+.schedule-sub p {
+  margin: 16px 0 0;
+  color: #0284c7;
+  font-size: 16px;
+  font-weight: 1000;
+  line-height: 1.4;
+}
+
+.schedule-card.rest {
+  opacity: .82;
+  filter: saturate(.86);
+}
+
+.schedule-card.rest h3 {
+  color: rgba(15,23,42,.72);
+}
+
+.schedule-sub {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(14,165,233,.18);
+}
+
+
+.schedule-sub p {
+  margin-top: 8px;
+}
+
+/* =========================
+   WEEK COLOR THEMES
+========================= */
+
+.schedule-card.monday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.92), rgba(226,232,240,.82));
+  border-color: rgba(148,163,184,.22);
+}
+
+.schedule-card.tuesday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(207,250,254,.86));
+  border-color: rgba(34,211,238,.22);
+}
+
+.schedule-card.wednesday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(220,252,231,.84));
+  border-color: rgba(74,222,128,.22);
+}
+
+.schedule-card.thursday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(219,234,254,.84));
+  border-color: rgba(96,165,250,.22);
+}
+
+.schedule-card.friday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(237,233,254,.84));
+  border-color: rgba(139,92,246,.28);
+}
+
+.schedule-card.saturday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.95), rgba(254,215,170,.82));
+  border-color: rgba(251,146,60,.24);
+}
+
+.schedule-card.sunday {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(252,231,243,.82));
+  border-color: rgba(244,114,182,.18);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-schedule {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .schedule-card {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .concept-main,
+  .concept-side {
+    border-radius: 30px;
+    padding: 24px;
+  }
+
+  .schedule-card {
+    flex-basis: 76%;
+    min-height: 200px;
+    border-radius: 26px;
+  }
+
+  .schedule-card.featured,
+  .schedule-card.featured:hover {
+    transform: none;
+  }
+
+  .schedule-card h3 {
+    font-size: 19px;
+  }
 }

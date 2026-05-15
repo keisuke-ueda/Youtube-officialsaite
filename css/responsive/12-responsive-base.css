@@ -288,3 +288,113 @@
     font-size: 10.5px;
   }
 }
+
+@media (max-width: 560px) {
+  #contents .cards {
+    display: flex;
+    grid-template-columns: unset;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #contents .card {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  #flow .stream-board {
+    display: flex;
+    grid-template-columns: unset;
+    grid-template-areas: none;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #flow .stream-program,
+  #flow .stream-program.featured {
+    flex: 0 0 82%;
+    min-height: 300px;
+    scroll-snap-align: start;
+  }
+
+  #flow .room-rules {
+    display: flex;
+    grid-template-columns: unset;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #flow .room-rule {
+    flex: 0 0 76%;
+    scroll-snap-align: start;
+  }
+
+  #contents .cards::-webkit-scrollbar,
+  #flow .stream-board::-webkit-scrollbar,
+  #flow .room-rules::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  #contents .cards {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #contents .card {
+    flex: 0 0 82% !important;
+    width: 82% !important;
+    min-width: 82% !important;
+    max-width: 82% !important;
+    scroll-snap-align: start;
+  }
+
+  #contents .cards::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  #contents .cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+    gap: 14px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #contents .card {
+    flex: 0 0 82% !important;
+    width: 82% !important;
+    min-width: 82% !important;
+    max-width: 82% !important;
+
+    scroll-snap-align: start;
+  }
+
+  #contents .cards::-webkit-scrollbar {
+    display: none;
+  }
+}

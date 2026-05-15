@@ -1,3 +1,74 @@
+/* =========================
+   STREAM BOARD LAYOUT FIX
+========================= */
+
+.stream-board {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr;
+  grid-template-areas:
+    "main vertical study"
+    "main game work";
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.stream-program.featured {
+  grid-area: main;
+}
+
+.stream-program.vertical {
+  grid-area: vertical;
+}
+
+.stream-program.study {
+  grid-area: study;
+}
+
+.stream-program.game {
+  grid-area: game;
+}
+
+.stream-program.work {
+  grid-area: work;
+}
+
+/* counseling画像が出ない問題の修正 */
+.stream-program.featured.counseling::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* SPだけ横スクロール */
+@media (max-width: 560px) {
+  #flow .stream-board {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-areas: none;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #flow .stream-program,
+  #flow .stream-program.featured {
+    flex: 0 0 82%;
+    width: 82%;
+    min-width: 82%;
+    max-width: 82%;
+    min-height: 390px;
+    scroll-snap-align: start;
+  }
+
+  #flow .stream-board::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .stream-program {
   position: relative;
   overflow: hidden;

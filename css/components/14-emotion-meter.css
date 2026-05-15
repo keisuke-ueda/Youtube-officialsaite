@@ -102,3 +102,24 @@
     font-size: 12px;
   }
 }
+
+
+.x-post-emotion {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(37,99,235,.24);
+}
+
+.x-post-emotion:hover {
+  transform: translateY(-2px);
+}

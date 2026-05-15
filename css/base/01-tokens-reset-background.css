@@ -19,37 +19,32 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   color: var(--text);
-  background: var(--bg);
+
+  background: transparent;
+
   overflow-x: hidden;
+
+  position: relative;
+}
+main,
+.section,
+.hero,
+.site-shell{
+
+  position: relative;
+  z-index: 1;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -4;
-  background:
-    radial-gradient(circle at 14% 12%, rgba(125,211,252,.55), transparent 28%),
-    radial-gradient(circle at 84% 16%, rgba(240,171,252,.36), transparent 28%),
-    radial-gradient(circle at 50% 95%, rgba(253,230,138,.34), transparent 34%),
-    linear-gradient(180deg, #f0fdff 0%, #e0f7ff 46%, #f8fbff 100%);
-}
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  opacity: .22;
-  background-image:
-    linear-gradient(rgba(14,165,233,.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14,165,233,.28) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
-  pointer-events: none;
-}
+
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -58,7 +53,7 @@ button { font: inherit; }
 .stars {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -10;
   pointer-events: none;
   background-image:
     radial-gradient(circle, rgba(14,165,233,.45) 1px, transparent 1.5px),
@@ -67,7 +62,7 @@ button { font: inherit; }
   background-size: 120px 120px, 180px 180px, 240px 240px;
   background-position: 20px 10px, 70px 80px, 30px 150px;
   animation: starMove 24s linear infinite;
-  opacity: .62;
+  opacity: .22;
 }
 
 #cursorGlow {
@@ -79,7 +74,7 @@ button { font: inherit; }
   pointer-events: none;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(34,211,238,.22), transparent 62%);
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
 }
 
 #toastArea {
