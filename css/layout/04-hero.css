@@ -278,3 +278,113 @@ h1 {
 .bar:nth-child(3) { animation-delay: .2s; }
 .bar:nth-child(4) { animation-delay: .3s; }
 .bar:nth-child(5) { animation-delay: .4s; }
+
+/* =========================
+   HERO MOBILE OPTIMIZE
+========================= */
+
+@media (max-width: 560px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 26px 0 48px;
+    min-height: auto;
+  }
+
+  .hero-visual {
+    min-height: 420px;
+  }
+
+  .stream-room {
+    inset: 12px 0 0;
+    border-radius: 34px;
+  }
+
+  .character {
+    width: 102%;
+    bottom: -4px;
+  }
+
+  .comment-bubble {
+    max-width: 170px;
+    padding: 10px 12px;
+    border-radius: 18px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .bubble-1 {
+    left: 8px;
+    top: 74px;
+  }
+
+  .bubble-2 {
+    right: 8px;
+    bottom: 124px;
+  }
+
+  .bubble-3 {
+    left: 16px;
+    bottom: 54px;
+  }
+
+  .pet-area {
+    left: 18px;
+    top: 18px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .wave-card {
+    right: 16px;
+    bottom: 24px;
+
+    height: 44px;
+
+    padding: 10px 12px;
+
+    border-radius: 16px;
+  }
+
+  .bar {
+    width: 4px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 12vw, 64px);
+    line-height: 1.02;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-top: 18px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .btn {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+  .floating-heart {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .mini-status {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .status-card {
+    padding: 12px;
+    border-radius: 18px;
+  }
+}

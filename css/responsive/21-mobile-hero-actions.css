@@ -1,10 +1,9 @@
 /* ================================
    SP first-view compact hero buttons
-   ================================ */
+================================ */
 
 @media (max-width: 560px) {
 
-  /* SPではボタンで縦を取りすぎないようにする */
   .hero {
     gap: 14px;
     padding-top: 12px;
@@ -22,15 +21,15 @@
 
   .hero-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 10px;
     margin-top: 18px;
   }
 
   .hero-actions .btn {
-    width: auto;
-    min-height: 42px;
-    padding: 10px 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 14px;
     font-size: 12px;
     line-height: 1.2;
     border-radius: 999px;
@@ -38,26 +37,19 @@
     white-space: nowrap;
   }
 
-  /* YouTube導線は一番重要なので横幅いっぱい */
   #youtubeButton {
-    grid-column: 1 / -1;
-    min-height: 46px;
+    min-height: 48px;
     font-size: 13px;
   }
 
-  /* BGMとモヤモヤボタンは2分割 */
-  #bgmButton,
   #breakButton {
-    grid-column: auto;
+    width: min(260px, 82%);
+    justify-self: center;
+    min-height: 42px;
+    font-size: 12px;
+    text-align: center;
   }
 
-  #breakButton {
-    font-size: 11px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* ハートは右下固定のまま、ボタン列の高さに含めない */
   .floating-heart {
     position: fixed;
     right: max(14px, env(safe-area-inset-right));
@@ -68,7 +60,6 @@
     font-size: 22px;
   }
 
-  /* イラストがファーストビューに入りやすいように少しだけ圧縮 */
   h1 {
     font-size: clamp(32px, 10.5vw, 44px);
   }
@@ -81,22 +72,24 @@
 }
 
 @media (max-width: 380px) {
+
   .hero-actions {
-    gap: 6px;
+    gap: 8px;
   }
 
   .hero-actions .btn {
-    min-height: 40px;
-    padding: 9px 10px;
+    min-height: 42px;
+    padding: 10px 12px;
     font-size: 11px;
   }
 
   #youtubeButton {
-    min-height: 44px;
+    min-height: 46px;
     font-size: 12px;
   }
 
   #breakButton {
-    font-size: 10.5px;
+    width: min(240px, 84%);
+    font-size: 11px;
   }
 }
