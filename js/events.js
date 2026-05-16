@@ -388,7 +388,7 @@ function bindEvents() {
 
 
 // Xのpost
-  const SITE_URL = 'https://ここにURL';
+  const SITE_URL = 'https://www.field-up.work/youtube-saite/';
 
   document.getElementById('xPostEmotionButton')?.addEventListener('click', async event => {
 
