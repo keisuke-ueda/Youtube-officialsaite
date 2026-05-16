@@ -4,9 +4,12 @@ function toast(title, desc = '') {
   const el = document.createElement('div');
   el.className = 'toast';
   el.innerHTML = `${title}${desc ? `<small>${desc}</small>` : ''}`;
+  if (window.matchMedia('(max-width: 560px)').matches) {
+    toastArea.innerHTML = '';
+  }
   toastArea.appendChild(el);
 
-  const duration = window.innerWidth <= 560 ? 1100 : 2600;
+  const duration = window.innerWidth <= 560 ? 1800 : 2600;
 
   setTimeout(() => {
     el.classList.add('toast-hide');

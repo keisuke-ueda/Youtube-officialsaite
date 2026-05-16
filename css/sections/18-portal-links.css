@@ -8,7 +8,8 @@
 .portal-card {
   position: relative;
   overflow: hidden;
-  min-height: 260px;
+  isolation: isolate;
+  min-height: 280px;
   padding: 28px;
   border-radius: 36px;
   color: inherit;
@@ -27,46 +28,50 @@
     0 0 30px rgba(34,211,238,.12);
 }
 
+/* 背景画像 */
 .portal-card::before {
   content: "";
   position: absolute;
-  right: -48px;
-  top: -48px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.5);
+  inset: 0;
+  z-index: -2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  opacity: .22;
+  filter: blur(1.5px) saturate(.82);
+  transform: scale(1.04);
 }
 
+/* 白グラデで馴染ませる */
 .portal-card::after {
+  content: "";
   position: absolute;
-  right: 18px;
-  bottom: 12px;
-  font-size: 58px;
-  font-weight: 1000;
-  letter-spacing: -.08em;
-  color: rgba(2,132,199,.09);
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.96) 0%,
+      rgba(255,255,255,.88) 42%,
+      rgba(255,255,255,.58) 100%
+    );
   pointer-events: none;
 }
 
-.portal-game {
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.88), rgba(220,252,231,.6)),
-    radial-gradient(circle at 90% 12%, rgba(134,239,172,.28), transparent 34%);
+.portal-card .portal-bg-word {
+  display: none;
 }
 
-.portal-game::after {
-  content: "GAME";
+.portal-game::before {
+  background-image: url("../../media/portal/mental-suika.jpg");
 }
 
-.portal-test {
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.88), rgba(237,233,254,.62)),
-    radial-gradient(circle at 90% 12%, rgba(139,92,246,.18), transparent 34%);
+.portal-test::before {
+  background-image: url("../../media/portal/egogram.jpg");
 }
 
-.portal-test::after {
-  content: "TEST";
+.portal-coming::before {
+  opacity: 0;
 }
 
 .portal-coming {
@@ -76,7 +81,8 @@
 }
 
 .portal-coming::after {
-  content: "NEXT";
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.88), rgba(224,242,254,.62));
 }
 
 .portal-label,
@@ -93,7 +99,7 @@
   padding: 6px 12px;
   border-radius: 999px;
   color: #0284c7;
-  background: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.78);
   border: 1px solid rgba(14,165,233,.18);
   font-size: 12px;
   font-weight: 900;
@@ -105,7 +111,7 @@
   display: grid;
   place-items: center;
   border-radius: 26px;
-  background: rgba(255,255,255,.78);
+  background: rgba(255,255,255,.82);
   border: 1px solid rgba(14,165,233,.15);
   font-size: 34px;
   box-shadow: 0 14px 30px rgba(14,116,144,.1);
@@ -119,6 +125,7 @@
 
 .portal-card p {
   margin: 0;
+  max-width: 88%;
   color: var(--muted);
   line-height: 1.75;
 }
@@ -146,6 +153,7 @@
     overflow-x: auto;
     padding: 4px 2px 16px;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .portal-card,
@@ -157,11 +165,21 @@
     scroll-snap-align: start;
   }
 
+  .portal-card::before {
+    opacity: .18;
+    background-position: center;
+  }
+
   .portal-card h3 {
     font-size: 22px;
   }
 
   .portal-card p {
+    max-width: 100%;
     font-size: 13px;
+  }
+
+  .portal-grid::-webkit-scrollbar {
+    display: none;
   }
 }

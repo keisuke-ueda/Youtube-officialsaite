@@ -1,105 +1,76 @@
-/* ================================
-   SP Toast UX Improve
-   ================================ */
+/* =========================
+   SP TOAST SAFE DESIGN
+========================= */
 
 @media (max-width: 560px) {
-
-  #toastArea{
+  #toastArea {
     position: fixed;
+    left: 14px;
+    right: 14px;
+    top: auto;
+    bottom: 86px;
 
-    top: 118px;
-    left: 10px;
-    right: auto;
-    bottom: auto;
+    z-index: 9997;
 
-    z-index: 9999;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    gap: 6px;
-
-    width: auto;
-    max-width: calc(100vw - 20px);
+    display: grid;
+    justify-items: center;
 
     pointer-events: none;
   }
 
-  .toast{
-    width: fit-content;
-    max-width: 220px;
+  #toastArea .toast {
+    width: min(100%, 340px);
     min-width: 0;
 
-    padding: 10px 12px;
-
-    border-radius: 14px;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.96),
-        rgba(240,249,255,.92)
-      );
-
-    border: 1px solid rgba(34,211,238,.16);
-
-    box-shadow:
-      0 10px 24px rgba(14,116,144,.12),
-      0 0 18px rgba(34,211,238,.08);
-
-    backdrop-filter: blur(14px);
+    padding: 12px 14px;
+    border-radius: 20px;
 
     color: #075985;
-
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.45;
     font-weight: 800;
 
-    animation:
-      toastInSP .22s ease both;
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(14,165,233,.18);
+
+    box-shadow: 0 16px 38px rgba(14,116,144,.18);
+    backdrop-filter: blur(16px);
+
+    animation: toastMobileIn .22s ease both;
   }
 
-  .toast strong{
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .toast small{
-    display:block;
-
-    margin-top:3px;
-
-    font-size:10px;
-    line-height:1.4;
-
-    opacity:.72;
+  #toastArea .toast small {
+    display: block;
+    margin-top: 3px;
 
     color: rgba(15,23,42,.72);
+    font-size: 11px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  #toastArea .toast:nth-last-child(n + 2) {
+    display: none;
   }
 }
 
-.toast-hide{
-  opacity:0;
-  transform:translateY(-6px) scale(.96);
+.toast-hide {
+  opacity: 0;
+  transform: translateY(10px) scale(.98);
 
   transition:
     opacity .18s ease,
     transform .18s ease;
 }
 
-@keyframes toastInSP{
-  from{
-    opacity:0;
-    transform:
-      translateY(8px)
-      scale(.96);
+@keyframes toastMobileIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(.96);
   }
 
-  to{
-    opacity:1;
-    transform:
-      translateY(0)
-      scale(1);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
