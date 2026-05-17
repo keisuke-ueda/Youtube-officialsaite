@@ -558,3 +558,101 @@
     justify-content:center;
   }
 }
+
+
+.goods-room::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  bottom: -42px;
+
+  width: clamp(180px, 26vw, 360px);
+  height: clamp(180px, 26vw, 360px);
+
+  background-image: url("../../media/goods/konkei-stamp.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left bottom;
+
+  opacity: .13;
+  filter: blur(.2px) saturate(.9);
+  transform: rotate(-8deg);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.goods-copy,
+.goods-lifestyle {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-line-stamp{
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14d8b4 0%,
+      #10caa5 35%,
+      #0ab69a 65%,
+      #0f9f91 100%
+    );
+
+  border: none;
+
+  box-shadow:
+    0 12px 28px rgba(16,185,129,.25),
+    0 0 18px rgba(45,212,191,.18);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+.btn-line-stamp:hover{
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 38px rgba(16,185,129,.35),
+    0 0 30px rgba(45,212,191,.22);
+
+  filter: brightness(1.04);
+}
+
+.btn-line-stamp:active{
+  transform: translateY(0);
+}
+
+.btn-line-stamp::before{
+  content:"💬";
+  margin-right:8px;
+  font-size:14px;
+}
+
+@media (max-width: 560px) {
+  .goods-room::before {
+    left: auto;
+    right: -34px;
+    bottom: 20px;
+
+    width: 190px;
+    height: 190px;
+
+    opacity: .1;
+    transform: rotate(8deg);
+  }
+
+  .goods-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .goods-actions .btn,
+  .goods-note {
+    width: 100%;
+    justify-content: center;
+  }
+}
